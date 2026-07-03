@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pageSEO } from '../config/site';
+import { TeamSection } from '../components/sections/TeamSection';
+
+const seo = pageSEO.about;
+
+/**
+ * About Page
+ *
+ * Comprehensive about page featuring:
+ * - Company Story (Hero + Origin)
+ * - Core Values
+ * - Leadership and Team
+ */
+---
+
+<Layout title={seo.title} description={seo.description}>
+  {/* 1. Team Section */}
+  <TeamSection client:load />
+</Layout>

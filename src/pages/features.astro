@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pageSEO } from '../config/site';
+import { FeaturesHero } from '../components/sections/FeaturesHero';
+import { FeatureDetail } from '../components/sections/FeatureDetail';
+
+const seo = pageSEO.features;
+---
+
+<Layout title={seo.title} description={seo.description}>
+  {/* 1. Features Hero Section */}
+  <FeaturesHero client:load />
+
+  {/* 2. Detailed Feature Sections (Alternating) */}
+  <FeatureDetail client:load />
+</Layout>

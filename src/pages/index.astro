@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getAssetPath } from '../config/paths';
+import { Hero } from '../components/sections/Hero';
+import { LogoCloudSection } from '../components/sections/LogoCloudSection';
+import { FeaturesOverview } from '../components/sections/FeaturesOverview';
+import { HowItWorks } from '../components/sections/HowItWorks';
+import { StatsSection } from '../components/sections/StatsSection';
+import { TestimonialsSection } from '../components/sections/TestimonialsSection';
+---
+
+<Layout
+  title="Home"
+  preloadImages={[
+    {
+      href: getAssetPath('images/ajedu-hero.jpg'),
+      fetchpriority: 'high',
+      as: 'image',
+      type: 'image/jpeg',
+    },
+  ]}
+>
+  {/* 1. Hero Section */}
+  <Hero client:load transition:persist />
+
+  {/* 2. Features Overview Section */}
+  <FeaturesOverview client:load transition:persist />
+
+  {/* 3. How It Works Section */}
+  <HowItWorks client:load transition:persist />
+
+  {/* 4. Statistics Section */}
+  <StatsSection client:load transition:persist />
+
+  {/* 5. Testimonials Section */}
+  <TestimonialsSection client:load transition:persist />
+
+  {/* 6. Collaborator Websites Section */}
+  <LogoCloudSection client:load transition:persist />
+</Layout>

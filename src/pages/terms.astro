@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pageSEO, company } from '../config/site';
+import { LegalHero } from '../components/sections/LegalHero';
+import { LegalContent } from '../components/sections/LegalContent';
+import { termsData } from '../data/legal';
+
+const seo = pageSEO.terms;
+---
+
+<Layout title={`${seo.title} | ${company.name}`} description={seo.description}>
+  <LegalHero title={termsData.title} lastUpdated={termsData.lastUpdated} />
+
+  <LegalContent sections={termsData.sections} />
+</Layout>

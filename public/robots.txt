@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ajedu.blogspot.com/sitemap-index.xml

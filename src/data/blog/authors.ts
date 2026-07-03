@@ -1,0 +1,33 @@
+import type { BlogAuthor } from './types';
+
+/** Blog authors */
+export const blogAuthors: BlogAuthor[] = [
+  {
+    id: 'equipo-ajedu',
+    name: 'Equipo ajEdu',
+    role: 'Red Internacional Ajedrez y Educación',
+    avatar: '/images/team/person-01.jpg',
+    bio: 'Equipo editorial de ajEdu, dedicado a compartir recursos, experiencias y proyectos para impulsar el ajedrez educativo.',
+  },
+  {
+    id: 'docentes-colaboradores',
+    name: 'Docentes colaboradores',
+    role: 'Ajedrez en el aula',
+    avatar: '/images/team/person-02.jpg',
+    bio: 'Docentes y educadores que comparten actividades, retos y propuestas para llevar el ajedrez a centros escolares.',
+  },
+  {
+    id: 'comunidad-ajedu',
+    name: 'Comunidad ajEdu',
+    role: 'Recursos y experiencias',
+    avatar: '/images/team/person-03.jpg',
+    bio: 'Personas, clubes, centros y proyectos conectados por una misma idea: usar el ajedrez como herramienta educativa.',
+  },
+  {
+    id: 'coordinacion-ajedu',
+    name: 'Coordinación ajEdu',
+    role: 'Congresos y publicaciones',
+    avatar: '/images/team/person-04.jpg',
+    bio: 'Coordinación de encuentros, publicaciones y espacios de intercambio para seguir haciendo crecer la red ajEdu.',
+  },
+];

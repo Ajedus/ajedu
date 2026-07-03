@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pageSEO } from '../config/site';
+import { ContactHero } from '../components/sections/ContactHero';
+
+const seo = pageSEO.contact;
+---
+
+<Layout title={seo.title} description={seo.description}>
+  {/* 1. Contact Hero */}
+  <ContactHero client:load />
+
+</Layout>
