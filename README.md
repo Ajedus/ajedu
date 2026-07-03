@@ -13,8 +13,6 @@ Aportando al ajedrez educativo desde 2005.
 
 Sitio web estatico para compartir recursos, experiencias, proyectos, publicaciones e integrantes de la comunidad ajEdu.
 
-![Captura de ajEdu](public/screenshot.png)
-
 </div>
 
 ---
@@ -69,7 +67,6 @@ Repositorio GitHub
 |   +-- images/
 |   +-- favicon.svg
 |   +-- robots.txt
-|   +-- screenshot.png
 +-- src/
 |   +-- components/
 |   |   +-- layout/
