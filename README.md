@@ -185,12 +185,6 @@ La web incluye:
 - Web estatica, rapida y facil de mantener.
 - Sin publicidad ni distracciones innecesarias.
 
-## Creditos
-
-Proyecto web de ajEdu, Red Internacional Ajedrez y Educacion.
-
-Coordinacion: Joaquin Fernandez Amigo.
-
 ---
 
 <div align="center">
