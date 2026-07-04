@@ -13,6 +13,7 @@ export const post9: BlogPost = {
   readingTime: 7,
   featured: true,
   coverImage: '/images/blog/hombres-musgo-bejar/hombres-musgo-bejar-1.webp',
+  ogImage: '/images/og/ajedrez-hombres-de-musgo-bejar.png',
   tags: ['ajedrez educativo', 'recursos', 'experiencias'],
   relatedPosts: [],
   content: `

@@ -23,41 +23,27 @@ export const OrganizationSchema: React.FC = () => {
     url: siteUrl,
     logo: {
       '@type': 'ImageObject' as const,
-      url: `${siteUrl}${getAssetPath('logo.png')}`,
+      url: `${siteUrl}${getAssetPath('images/ajedu-favicon.png')}`,
     },
     sameAs: [
       social.twitterUrl,
       social.githubUrl,
       social.linkedinUrl,
+      social.instagramUrl,
+      social.facebookUrl,
       social.youtubeUrl,
       social.discordUrl,
     ].filter(Boolean),
     contactPoint: [
-      contact.supportEmail && {
+      contact.email && {
         '@type': 'ContactPoint' as const,
-        telephone: contact.phone,
         contactType: 'información',
-        email: contact.supportEmail,
-        availableLanguage: ['Spanish'],
-      },
-      contact.salesEmail && {
-        '@type': 'ContactPoint' as const,
-        telephone: contact.phone,
-        contactType: 'colaboraciones',
-        email: contact.salesEmail,
-        availableLanguage: ['Spanish'],
+        email: contact.email,
+        availableLanguage: ['es'],
       },
     ].filter(Boolean),
-    address: {
-      '@type': 'PostalAddress' as const,
-      streetAddress: contact.address.street,
-      addressLocality: contact.address.city,
-      addressRegion: contact.address.state,
-      postalCode: contact.address.zip,
-      addressCountry: contact.address.country,
-    },
     founder: {
-      '@type': 'Person' as const,
+      '@type': 'Organization' as const,
       name: company.name,
     },
     foundingDate: String(company.foundedYear),

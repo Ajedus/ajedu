@@ -19,7 +19,7 @@ export const featuredBlogPost = blogPosts[0]!;
 
 /** Blog page metadata */
 export const blogMetadata = {
-  title: 'Blog | ajEdu',
+  title: 'Blog de ajEdu',
   description: 'Recursos, experiencias y publicaciones para llevar el ajedrez educativo al aula.',
   keywords: ['ajEdu', 'ajedrez educativo', 'recursos', 'docentes', 'educacion'],
 } as const;

@@ -23,7 +23,6 @@ export const ArticleSchema: React.FC<ArticleSchemaProps> = ({ post }) => {
   const { company } = site;
   const { siteUrl } = getPathConfig();
 
-  // Ensure cover image is a full URL
   const coverImageUrl = post.coverImage.startsWith('http')
     ? post.coverImage
     : `${siteUrl}${getAssetPath(post.coverImage)}`;
@@ -50,7 +49,7 @@ export const ArticleSchema: React.FC<ArticleSchemaProps> = ({ post }) => {
       name: company.name,
       logo: {
         '@type': 'ImageObject' as const,
-        url: `${siteUrl}${getAssetPath('logo.png')}`,
+        url: `${siteUrl}${getAssetPath('images/ajedu-favicon.png')}`,
       },
     },
     mainEntityOfPage: {

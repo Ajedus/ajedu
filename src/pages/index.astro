@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { pageSEO } from '../config/site';
 import { getAssetPath } from '../config/paths';
 import { Hero } from '../components/sections/Hero';
 import { LogoCloudSection } from '../components/sections/LogoCloudSection';
@@ -10,7 +11,8 @@ import { TestimonialsSection } from '../components/sections/TestimonialsSection'
 ---
 
 <Layout
-  title="Home"
+  title={pageSEO.home.title}
+  description={pageSEO.home.description}
   preloadImages={[
     {
       href: getAssetPath('images/ajedu-hero.webp'),

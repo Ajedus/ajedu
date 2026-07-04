@@ -58,11 +58,15 @@ const crumbs = [
 ---
 
 <Layout
-  title={`${title} | Blog ajEdu`}
+  title={title}
   description={excerpt}
   crumbs={crumbs}
   ogType="article"
-  ogImage={coverImage}
+  ogImage={post.ogImage || coverImage}
+  ogImageAlt={title}
+  publishedTime={publishedAt}
+  modifiedTime={post.updatedAt || publishedAt}
+  tags={tags}
   preloadImages={[
     {
       href: getAssetPath(coverImage),

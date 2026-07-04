@@ -1,6 +1,6 @@
 import React from 'react';
 import site from '../../config/site';
-import { getCanonicalUrl } from '../../config/paths';
+import { getCanonicalUrl, isExternalUrl } from '../../config/paths';
 
 export interface MetaTagsProps {
   /** Page-specific title override */
@@ -17,8 +17,16 @@ export interface MetaTagsProps {
   ogType?: 'website' | 'article' | 'profile' | undefined;
   /** Page-specific OG image override */
   ogImage?: string | undefined;
+  /** Page-specific OG image alternative text */
+  ogImageAlt?: string | undefined;
   /** Page-specific Twitter card override (default: from config) */
   twitterCard?: 'summary' | 'summary_large_image' | undefined;
+  /** Article publish date for Open Graph */
+  publishedTime?: string | undefined;
+  /** Article modified date for Open Graph */
+  modifiedTime?: string | undefined;
+  /** Article tags for Open Graph */
+  tags?: string[] | undefined;
 }
 
 /**
@@ -37,7 +45,11 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
   pathname = '',
   ogType = 'website',
   ogImage,
+  ogImageAlt,
   twitterCard,
+  publishedTime,
+  modifiedTime,
+  tags = [],
 }) => {
   const { seo: defaultSeo, getPageTitle } = site;
 
@@ -54,9 +66,16 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
   const finalRobots = robots || 'index, follow';
 
   // OG Image resolution
-  const finalOgImage = ogImage
-    ? getCanonicalUrl(ogImage)
-    : getCanonicalUrl(defaultSeo.defaultOgImage);
+  const socialImage = ogImage || defaultSeo.defaultOgImage;
+  const finalOgImage = isExternalUrl(socialImage) ? socialImage : getCanonicalUrl(socialImage);
+  const finalOgImageAlt = ogImageAlt || defaultSeo.defaultOgImageAlt;
+  const finalOgImageType = socialImage.endsWith('.png')
+    ? 'image/png'
+    : socialImage.endsWith('.jpg') || socialImage.endsWith('.jpeg')
+      ? 'image/jpeg'
+      : socialImage.endsWith('.webp')
+        ? 'image/webp'
+        : undefined;
 
   // Twitter card resolution
   const finalTwitterCard = twitterCard || defaultSeo.twitterCardType;
@@ -83,14 +102,29 @@ export const MetaTags: React.FC<MetaTagsProps> = ({
       <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={finalCanonical} />
       <meta property="og:image" content={finalOgImage} />
+      <meta property="og:image:secure_url" content={finalOgImage} />
+      {finalOgImageType && <meta property="og:image:type" content={finalOgImageType} />}
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={finalOgImageAlt} />
       <meta property="og:locale" content={defaultSeo.locale} />
+
+      {ogType === 'article' && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {ogType === 'article' && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {ogType === 'article' &&
+        tags.map((tag) => <meta key={tag} property="article:tag" content={tag} />)}
 
       {/* Twitter Tags */}
       <meta name="twitter:card" content={finalTwitterCard} />
-      <meta name="twitter:site" content={defaultSeo.twitterSite} />
+      {defaultSeo.twitterSite && <meta name="twitter:site" content={defaultSeo.twitterSite} />}
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={finalOgImage} />
+      <meta name="twitter:image:alt" content={finalOgImageAlt} />
     </>
   );
 };

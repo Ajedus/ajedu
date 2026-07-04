@@ -8,7 +8,7 @@ import { privacyData } from '../data/legal';
 const seo = pageSEO.privacy;
 ---
 
-<Layout title={`${seo.title} | ${company.name}`} description={seo.description}>
+<Layout title={seo.title} description={seo.description}>
   <LegalHero title={privacyData.title} lastUpdated={privacyData.lastUpdated} />
 
   <LegalContent sections={privacyData.sections} />

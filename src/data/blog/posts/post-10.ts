@@ -15,6 +15,7 @@ export const post10: BlogPost = {
   readingTime: 9,
   featured: true,
   coverImage: `${imageBase}/ajedrez-japones-damas-siglo-xix-01.webp`,
+  ogImage: '/images/og/ajedreces-artesanales-y-tematicos.png',
   tags: ['ajedrez educativo', 'recursos'],
   relatedPosts: [],
   content: `

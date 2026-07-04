@@ -39,6 +39,7 @@ export interface BlogPost {
   readingTime: number;
   featured: boolean;
   coverImage: string;
+  ogImage?: string;
   tags: string[];
   relatedPosts?: string[];
 }

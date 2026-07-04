@@ -46,6 +46,10 @@ export interface SocialLinksConfig {
   discordUrl: string;
   /** YouTube channel URL */
   youtubeUrl: string;
+  /** Instagram profile URL */
+  instagramUrl: string;
+  /** Facebook profile or group URL */
+  facebookUrl: string;
 }
 
 /**
@@ -108,6 +112,8 @@ export interface SEOConfig {
   defaultDescription: string;
   /** Default OG image path */
   defaultOgImage: string;
+  /** Default OG image alternative text */
+  defaultOgImageAlt: string;
   /** Twitter card type */
   twitterCardType: 'summary' | 'summary_large_image';
   /** Twitter site handle (with @) */
@@ -168,7 +174,7 @@ export const company: CompanyConfig = {
   name: 'ajEdu',
   tagline: 'Red Internacional Ajedrez y Educación',
   shortDescription:
-    'Aportando al ajedrez educativo desde 2005 con recursos, experiencias y proyectos compartidos.',
+    'Recursos, experiencias, publicaciones y proyectos para impulsar el ajedrez educativo desde 2005.',
   fullDescription: `ajEdu es una red internacional dedicada a compartir recursos, experiencias, publicaciones y 
     proyectos vinculados al ajedrez educativo.
     
@@ -187,12 +193,14 @@ export const company: CompanyConfig = {
  */
 export const social: SocialLinksConfig = {
   twitter: '',
-  twitterUrl: 'https://ajedu.blogspot.com/',
-  github: '',
-  githubUrl: 'https://ajedu.blogspot.com/',
-  linkedinUrl: 'https://ajedu.blogspot.com/',
-  discordUrl: 'https://ajedu.blogspot.com/',
-  youtubeUrl: 'https://ajedu.blogspot.com/',
+  twitterUrl: '',
+  github: 'Ajedus',
+  githubUrl: 'https://github.com/Ajedus',
+  linkedinUrl: '',
+  discordUrl: '',
+  youtubeUrl: '',
+  instagramUrl: 'https://www.instagram.com/redajedu/',
+  facebookUrl: 'https://www.facebook.com/groups/147072125436905/',
 } as const;
 
 /**
@@ -237,8 +245,10 @@ export const footer: FooterConfig = {
 export const seo: SEOConfig = {
   titleTemplate: '{title} | ajEdu',
   titleSuffix: ' | ajEdu',
-  defaultDescription: `${company.name} - ${company.tagline}. ${company.shortDescription}`,
-  defaultOgImage: '/images/og-default.webp',
+  defaultDescription:
+    'ajEdu es una red internacional de ajedrez y educación con recursos, experiencias, publicaciones e integrantes de la comunidad educativa.',
+  defaultOgImage: '/images/og-ajedu.png',
+  defaultOgImageAlt: 'ajEdu - Red Internacional Ajedrez y Educación',
   twitterCardType: 'summary_large_image',
   twitterSite: '',
   themeColor: '#1d4ed8',
@@ -356,20 +366,23 @@ export const siteNavigation = {
 export const pageSEO = {
   home: {
     title: 'Red Internacional Ajedrez y Educación',
-    description: `${company.tagline}. ${company.shortDescription}`,
+    description:
+      'ajEdu comparte recursos, experiencias, publicaciones y proyectos para llevar el ajedrez educativo al aula desde 2005.',
   },
   features: {
-    title: 'Recursos',
+    title: 'Recursos de ajedrez educativo',
     description:
-      'Recursos, experiencias y propuestas para llevar el ajedrez educativo al aula.',
+      'Materiales, libros, actividades, experiencias y propuestas didácticas para trabajar el ajedrez educativo en centros escolares.',
   },
   equipo: {
-    title: 'Equipo',
-    description: `Conoce al equipo y la comunidad que impulsa ${company.name}.`,
+    title: 'Equipo e integrantes',
+    description:
+      'Conoce a docentes, educadores, investigadores y colaboradores que forman parte de la comunidad internacional ajEdu.',
   },
   contact: {
-    title: 'Contacto',
-    description: `Contacta con ${company.name} para compartir recursos, experiencias o proyectos.`,
+    title: 'Contacto e incorporación',
+    description:
+      'Contacta con ajEdu, comparte recursos o solicita incorporarte a la red internacional de ajedrez educativo.',
   },
   join: {
     title: 'Quiero ser integrante',
@@ -380,8 +393,9 @@ export const pageSEO = {
     description: `Recursos y respuestas para conocer mejor ${company.name}.`,
   },
   blog: {
-    title: 'Blog',
-    description: `Recursos, experiencias y publicaciones de ${company.name}.`,
+    title: 'Blog de ajEdu',
+    description:
+      'Artículos, recursos, experiencias y publicaciones sobre ajedrez educativo compartidas por la comunidad ajEdu.',
   },
   changelog: {
     title: 'Novedades',

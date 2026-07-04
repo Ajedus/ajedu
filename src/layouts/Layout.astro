@@ -29,9 +29,13 @@ interface Props {
   crumbs?: BreadcrumbItem[];
   ogType?: 'website' | 'article' | 'profile';
   ogImage?: string;
+  ogImageAlt?: string;
   twitterCard?: 'summary' | 'summary_large_image';
   robots?: string;
   preloadImages?: PreloadImage[];
+  publishedTime?: string;
+  modifiedTime?: string;
+  tags?: string[];
 }
 
 const {
@@ -42,16 +46,20 @@ const {
   crumbs,
   ogType,
   ogImage,
+  ogImageAlt,
   twitterCard,
   robots,
   preloadImages = [],
+  publishedTime,
+  modifiedTime,
+  tags = [],
 } = Astro.props as Props;
 
 // Auto-generate crumbs if not provided
 const currentPath = Astro.url.pathname;
 const pathSegments = currentPath.split('/').filter(Boolean);
 
-const defaultCrumbs: BreadcrumbItem[] = [{ name: 'Home', item: ROUTES.HOME }];
+const defaultCrumbs: BreadcrumbItem[] = [{ name: 'Inicio', item: ROUTES.HOME }];
 
 pathSegments.forEach((segment, index) => {
   const url = `/${pathSegments.slice(0, index + 1).join('/')}/`;
@@ -106,8 +114,12 @@ const finalCrumbs = crumbs || defaultCrumbs;
       pathname={currentPath}
       ogType={ogType}
       ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
       twitterCard={twitterCard}
       robots={robots}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      tags={tags}
     />
 
     <!-- SEO Schemas -->

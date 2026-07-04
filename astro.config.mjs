@@ -32,8 +32,31 @@ export default defineConfig({
     react(),
     sitemap({
       serialize(item) {
-        // Automatically add lastmod date for all pages
         item.lastmod = new Date().toISOString();
+        const url = item.url || '';
+        if (url === 'https://redajedu.com/') {
+          item.changefreq = 'weekly';
+          item.priority = 1;
+        } else if (url.includes('/blog/') && url !== 'https://redajedu.com/blog/') {
+          item.changefreq = 'monthly';
+          item.priority = 0.8;
+        } else if (url.includes('/blog/')) {
+          item.changefreq = 'weekly';
+          item.priority = 0.9;
+        } else if (url.includes('/privacy/') || url.includes('/terms/')) {
+          item.changefreq = 'yearly';
+          item.priority = 0.3;
+        } else if (
+          url.includes('/features/') ||
+          url.includes('/equipo/') ||
+          url.includes('/contact/')
+        ) {
+          item.changefreq = 'monthly';
+          item.priority = 0.9;
+        } else {
+          item.changefreq = 'monthly';
+          item.priority = 0.7;
+        }
         return item;
       },
     }),
