@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link as LinkIcon } from 'lucide-react';
-import { FacebookIcon, LinkedinIcon, TwitterIcon } from '@/components/icons/BrandIcons';
+import { FacebookIcon, LinkedinIcon, XIcon } from '@/components/icons/BrandIcons';
 import { IconButton } from './Button';
 import { toast } from './Toast';
 import { cn } from '@/utils/cn';
@@ -26,7 +26,7 @@ export interface SocialShareProps {
  *
  * Provides social sharing buttons for blog posts and other content.
  * Features:
- * - Share to Twitter, LinkedIn, Facebook
+ * - Share to X, LinkedIn, Facebook
  * - Copy to clipboard functionality with toast feedback
  * - Responsive layout support (horizontal/vertical)
  * - Theme-aware styling
@@ -63,11 +63,11 @@ export const SocialShare: React.FC<SocialShareProps> = ({
 
   const shareLinks = [
     {
-      name: 'Twitter',
-      icon: TwitterIcon,
-      href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(title)}`,
-      color: 'hover:text-[#1DA1F2] dark:hover:text-[#1DA1F2]',
-      label: 'Share on Twitter',
+      name: 'X',
+      icon: XIcon,
+      href: `https://x.com/intent/post?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(title)}`,
+      color: 'hover:text-text-primary dark:hover:text-white',
+      label: 'Compartir en X',
     },
     {
       name: 'LinkedIn',
