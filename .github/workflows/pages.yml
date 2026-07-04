@@ -38,8 +38,8 @@ jobs:
       - name: Build
         run: pnpm run build
         env:
-          SITE_URL: https://redajedu.com
-          BASE_PATH: /
+          GITHUB_PAGES: 'true'
+          SITE_URL: https://ajedus.github.io
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
