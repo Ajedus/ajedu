@@ -238,7 +238,7 @@ export const seo: SEOConfig = {
   titleTemplate: '{title} | ajEdu',
   titleSuffix: ' | ajEdu',
   defaultDescription: `${company.name} - ${company.tagline}. ${company.shortDescription}`,
-  defaultOgImage: '/images/og-default.jpg',
+  defaultOgImage: '/images/og-default.webp',
   twitterCardType: 'summary_large_image',
   twitterSite: '',
   themeColor: '#1d4ed8',

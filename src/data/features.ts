@@ -125,7 +125,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Ajedrez en el aula',
     description:
       'Propuestas para introducir el ajedrez educativo en centros escolares de forma natural, flexible y conectada con la vida del aula.',
-    image: '/images/tech-01.jpg',
+    image: '/images/tech-01.webp',
     imageAlt: 'Recursos de ajedrez educativo para el aula',
     subFeatures: [
       'Actividades para primaria, secundaria y talleres escolares',
@@ -140,7 +140,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Materiales didácticos',
     description:
       'Una selección de recursos, retos, publicaciones y propuestas didácticas para trabajar el ajedrez como herramienta educativa.',
-    image: '/images/abstract-01.jpg',
+    image: '/images/abstract-01.webp',
     imageAlt: 'Materiales didácticos de ajedrez educativo',
     subFeatures: [
       'Fichas, retos y actividades adaptables al aula',
@@ -155,7 +155,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Red internacional ajEdu',
     description:
       'ajEdu conecta docentes, educadores, investigadores, clubes y proyectos de distintos países alrededor del ajedrez y la educación.',
-    image: '/images/tech-02.jpg',
+    image: '/images/tech-02.webp',
     imageAlt: 'Red internacional de ajedrez y educación',
     subFeatures: [
       'Integrantes de diferentes países y contextos educativos',
@@ -170,7 +170,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Congresos y encuentros',
     description:
       'Espacios de intercambio donde se presentan comunicaciones, talleres, investigaciones y proyectos vinculados al ajedrez educativo.',
-    image: '/images/devices-01.jpg',
+    image: '/images/devices-01.webp',
     imageAlt: 'Congresos y encuentros de ajEdu',
     subFeatures: [
       'Congresos virtuales y jornadas de formación',
@@ -185,7 +185,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Innovación educativa',
     description:
       'El ajedrez se plantea como una herramienta para aprender a pensar, convivir, planificar y resolver problemas desde una mirada educativa.',
-    image: '/images/tech-03.jpg',
+    image: '/images/tech-03.webp',
     imageAlt: 'Innovación educativa con ajedrez',
     subFeatures: [
       'Pensamiento lógico, creatividad y estrategia',
@@ -200,7 +200,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Experiencias de centros',
     description:
       'Experiencias compartidas por centros, docentes y proyectos que muestran cómo el ajedrez educativo puede aplicarse en contextos reales.',
-    image: '/images/office-01.jpg',
+    image: '/images/office-01.webp',
     imageAlt: 'Experiencias de centros con ajedrez educativo',
     subFeatures: [
       'Proyectos escolares con continuidad y objetivos claros',
@@ -215,7 +215,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Investigación y publicaciones',
     description:
       'ajEdu reúne artículos, estudios, comunicaciones y publicaciones que ayudan a comprender mejor el valor educativo del ajedrez.',
-    image: '/images/tech-04.jpg',
+    image: '/images/tech-04.webp',
     imageAlt: 'Investigación y publicaciones sobre ajedrez educativo',
     subFeatures: [
       'Artículos sobre ajedrez, educación y pensamiento',
@@ -230,7 +230,7 @@ export const featureDetails: FeatureDetail[] = [
     title: 'Libros de integrantes ajEdu',
     description:
       'Una biblioteca viva con obras publicadas por integrantes de ajEdu sobre ajedrez educativo, preajedrez, pensamiento, creatividad y cultura ajedrecística.',
-    image: '/images/abstract-02.jpg',
+    image: '/images/abstract-02.webp',
     imageAlt: 'Libros de integrantes de ajEdu',
     subFeatures: [
       'Mates curriculares y Jaques curriculares, de Joaquín Fernández Amigo',

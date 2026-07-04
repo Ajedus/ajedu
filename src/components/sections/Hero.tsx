@@ -101,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ className }) => {
               animate="animate"
             >
               <img
-                src="/images/ajedu-hero.jpg"
+                src="/images/ajedu-hero.webp"
                 alt="Imagen de temporada AjEdu"
                 className="w-full rounded-[2rem] border border-border-default/70 bg-black object-contain shadow-2xl"
                 loading="eager"

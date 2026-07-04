@@ -10,7 +10,7 @@
   },
   "images": [
     {
-      "filename": "tech-01.jpg",
+      "filename": "tech-01.webp",
       "category": "tech",
       "attribution": "Getty Images (@gettyimages)",
       "dimensions": {
@@ -19,7 +19,7 @@
       }
     },
     {
-      "filename": "tech-02.jpg",
+      "filename": "tech-02.webp",
       "category": "tech",
       "attribution": "Milad Fakurian (@fakurian)",
       "dimensions": {
@@ -28,7 +28,7 @@
       }
     },
     {
-      "filename": "tech-03.jpg",
+      "filename": "tech-03.webp",
       "category": "tech",
       "attribution": "Andrey Matveev (@zelebb)",
       "dimensions": {
@@ -46,7 +46,7 @@
       }
     },
     {
-      "filename": "abstract-01.jpg",
+      "filename": "abstract-01.webp",
       "category": "abstract",
       "attribution": "Woliul Hasan (@shotbywoliul)",
       "dimensions": {
@@ -55,7 +55,7 @@
       }
     },
     {
-      "filename": "abstract-02.jpg",
+      "filename": "abstract-02.webp",
       "category": "abstract",
       "attribution": "Milad Fakurian (@fakurian)",
       "dimensions": {
@@ -64,7 +64,7 @@
       }
     },
     {
-      "filename": "abstract-03.jpg",
+      "filename": "abstract-03.webp",
       "category": "abstract",
       "attribution": "Sean Sinclair (@seanwsinclair)",
       "dimensions": {
@@ -73,7 +73,7 @@
       }
     },
     {
-      "filename": "abstract-04.jpg",
+      "filename": "abstract-04.webp",
       "category": "abstract",
       "attribution": "Codioful (Formerly Gradienta) (@codioful)",
       "dimensions": {
@@ -82,7 +82,7 @@
       }
     },
     {
-      "filename": "team/person-01.jpg",
+      "filename": "team/person-01.webp",
       "category": "team",
       "attribution": "Unsplash",
       "dimensions": {
@@ -91,7 +91,7 @@
       }
     },
     {
-      "filename": "team/person-02.jpg",
+      "filename": "team/person-02.webp",
       "category": "team",
       "attribution": "Unsplash",
       "dimensions": {
@@ -100,7 +100,7 @@
       }
     },
     {
-      "filename": "team/person-03.jpg",
+      "filename": "team/person-03.webp",
       "category": "team",
       "attribution": "Unsplash",
       "dimensions": {
@@ -109,7 +109,7 @@
       }
     },
     {
-      "filename": "team/person-04.jpg",
+      "filename": "team/person-04.webp",
       "category": "team",
       "attribution": "Unsplash",
       "dimensions": {
@@ -118,7 +118,7 @@
       }
     },
     {
-      "filename": "office-01.jpg",
+      "filename": "office-01.webp",
       "category": "office",
       "attribution": "Toa Heftiba (@heftiba)",
       "dimensions": {
@@ -127,7 +127,7 @@
       }
     },
     {
-      "filename": "office-02.jpg",
+      "filename": "office-02.webp",
       "category": "office",
       "attribution": "Bernd 📷 Dittrich (@hdbernd)",
       "dimensions": {
@@ -136,7 +136,7 @@
       }
     },
     {
-      "filename": "office-03.jpg",
+      "filename": "office-03.webp",
       "category": "office",
       "attribution": "Curated Lifestyle (@curatedlifestyle)",
       "dimensions": {
@@ -154,7 +154,7 @@
       }
     },
     {
-      "filename": "devices-01.jpg",
+      "filename": "devices-01.webp",
       "category": "devices",
       "attribution": "Philip Oroni (@philipsfuture)",
       "dimensions": {
@@ -163,7 +163,7 @@
       }
     },
     {
-      "filename": "devices-02.jpg",
+      "filename": "devices-02.webp",
       "category": "devices",
       "attribution": "Allison Saeng (@allisonsaeng)",
       "dimensions": {
@@ -172,7 +172,7 @@
       }
     },
     {
-      "filename": "devices-03.jpg",
+      "filename": "devices-03.webp",
       "category": "devices",
       "attribution": "Michael Förtsch (@michael_f)",
       "dimensions": {
@@ -181,7 +181,7 @@
       }
     },
     {
-      "filename": "devices-04.jpg",
+      "filename": "devices-04.webp",
       "category": "devices",
       "attribution": "Andrey Matveev (@zelebb)",
       "dimensions": {
