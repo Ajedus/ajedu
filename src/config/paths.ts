@@ -213,8 +213,8 @@ export const ROUTES = {
   HOME: '/',
   FEATURES: '/features/',
   EQUIPO: '/equipo/',
-  JOIN: '/quiero-ser-integrante/',
   CONTACT: '/contact/',
+  JOIN: '/contact/#quiero-ser-integrante',
   BLOG: '/blog/',
 
   // Blog
@@ -237,7 +237,6 @@ export const NAVIGATION = {
     { label: 'Equipo', href: ROUTES.EQUIPO },
     { label: 'Blog', href: ROUTES.BLOG },
     { label: 'Contacto', href: ROUTES.CONTACT },
-    { label: 'Integrante', href: ROUTES.JOIN },
   ],
   footer: {
     product: [

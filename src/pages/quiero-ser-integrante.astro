@@ -1,55 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Container } from '../components/ui/Container';
-import { Section } from '../components/ui/Section';
-import { pageSEO } from '../config/site';
 
-const seo = pageSEO.join;
-const googleFormEmbedUrl =
-  'https://docs.google.com/forms/d/e/1FAIpQLSfng41FKAHABS4M9reJxMbxEdehKZziRzCI-ZUNJld5AGkqZg/viewform?embedded=true';
+const target = '/contact/#quiero-ser-integrante';
 ---
 
-<Layout title={seo.title} description={seo.description}>
-  <Section background="transparent" padding="xl" className="pt-32 sm:pt-40">
-    <Container size="narrow">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-primary-400">
-          Comunidad ajEdu
-        </p>
-        <h1 class="text-4xl font-extrabold tracking-tight text-text-primary sm:text-5xl md:text-6xl">
-          Quiero ser <span class="text-primary-400">integrante</span>
-        </h1>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
-          Si compartes recursos, experiencias, proyectos o investigacion vinculada al ajedrez
-          educativo, este sera el espacio para solicitar tu incorporacion a la red ajEdu.
-        </p>
-      </div>
-    </Container>
-  </Section>
+<Layout
+  title="Quiero ser integrante"
+  description="Solicitud para formar parte de la comunidad ajEdu."
+  headerVariant="none"
+  footerVariant="none"
+>
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <script is:inline set:html={`window.location.replace(${JSON.stringify(target)});`} />
+  </Fragment>
 
-  <Section background="muted" padding="lg">
-    <Container size="narrow">
-      {
-        googleFormEmbedUrl ? (
-          <div class="overflow-hidden rounded-2xl border border-border-default bg-bg-primary shadow-2xl">
-            <iframe
-              src={googleFormEmbedUrl}
-              class="h-[3300px] w-full border-0 sm:h-[3000px] lg:h-[2734px]"
-              title="Formulario para ser integrante de ajEdu"
-              loading="lazy"
-            >
-              Cargando formulario...
-            </iframe>
-          </div>
-        ) : (
-          <div class="rounded-2xl border border-border-default bg-bg-primary p-8 text-center shadow-2xl md:p-12">
-            <h2 class="text-2xl font-bold text-text-primary">Formulario de incorporacion</h2>
-            <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-text-secondary">
-              El formulario de solicitud se mostrara aqui en cuanto este activado.
-            </p>
-          </div>
-        )
-      }
-    </Container>
-  </Section>
+  <div class="min-h-screen bg-bg-primary px-6 py-16 text-center text-text-primary">
+    <p>Redirigiendo al formulario de ajEdu...</p>
+    <p class="mt-4">
+      <a class="text-primary-400 underline" href={target}>Ir al formulario</a>
+    </p>
+  </div>
 </Layout>

@@ -307,7 +307,6 @@ export const siteNavigation = {
     { label: 'Equipo', href: ROUTES.EQUIPO },
     { label: 'Blog', href: ROUTES.BLOG },
     { label: 'Contacto', href: ROUTES.CONTACT },
-    { label: 'Integrante', href: ROUTES.JOIN },
   ],
 
   /** Footer navigation sections */
