@@ -18,10 +18,10 @@ export const blogAuthors: BlogAuthor[] = [
   },
   {
     id: 'comunidad-ajedu',
-    name: 'Comunidad ajEdu',
-    role: 'Recursos y experiencias',
+    name: 'Comunidad Ajedu',
+    role: 'Aportado por miembros de la comunidad',
     avatar: '/images/team/person-03.jpg',
-    bio: 'Personas, clubes, centros y proyectos conectados por una misma idea: usar el ajedrez como herramienta educativa.',
+    bio: '',
   },
   {
     id: 'coordinacion-ajedu',

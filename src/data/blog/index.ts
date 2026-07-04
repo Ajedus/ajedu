@@ -6,20 +6,13 @@ export * from './types';
 export * from './categories';
 export * from './authors';
 
-import { post1 } from './posts/post-1';
-import { post2 } from './posts/post-2';
-import { post3 } from './posts/post-3';
-import { post4 } from './posts/post-4';
-import { post5 } from './posts/post-5';
-import { post6 } from './posts/post-6';
-import { post7 } from './posts/post-7';
-import { post8 } from './posts/post-8';
 import { post9 } from './posts/post-9';
+import { post10 } from './posts/post-10';
 
 import type { BlogPost } from './types';
 
 /** Blog posts */
-export const blogPosts: BlogPost[] = [post1, post9, post2, post3, post4, post5, post6, post7, post8];
+export const blogPosts: BlogPost[] = [post10, post9];
 
 /** Featured blog post (hero section) */
 export const featuredBlogPost = blogPosts[0]!;
@@ -42,12 +35,7 @@ export const blogNewsletter = {
 
 /** Popular tags for blog filtering */
 export const popularTags = [
-  'aula',
+  'ajedrez educativo',
   'recursos',
-  'valores',
-  'pensamiento',
-  'congresos',
-  'docentes',
   'experiencias',
-  'colaboraciones',
 ] as const;

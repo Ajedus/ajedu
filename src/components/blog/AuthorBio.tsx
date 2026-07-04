@@ -84,7 +84,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ author, className }) => {
             )}
           </div>
 
-          <p className="text-text-secondary leading-relaxed max-w-2xl">{bio}</p>
+          {bio && <p className="text-text-secondary leading-relaxed max-w-2xl">{bio}</p>}
         </div>
       </CardContent>
     </Card>

@@ -8,13 +8,13 @@ export const post9: BlogPost = {
   excerpt:
     'Una experiencia de ajedrez viviente donde la memoria, la tradición y la leyenda de los Hombres de Musgo convierten el tablero en patrimonio compartido.',
   category: 'experiencias',
-  author: blogAuthors.find((author) => author.id === 'ricardo-gil-turrion')!,
+  author: blogAuthors.find((author) => author.id === 'comunidad-ajedu')!,
   publishedAt: '2026-07-04',
   readingTime: 7,
-  featured: false,
+  featured: true,
   coverImage: '/images/blog/hombres-musgo-bejar/hombres-musgo-bejar-1.webp',
-  tags: ['experiencias', 'patrimonio', 'ajedrez viviente', 'Béjar', 'Hombres de Musgo'],
-  relatedPosts: ['1', '3', '8'],
+  tags: ['ajedrez educativo', 'recursos', 'experiencias'],
+  relatedPosts: [],
   content: `
     <p>Hay partidas de ajedrez que se juegan con piezas de madera. Otras, en cambio, se juegan con memoria, tradición y personas. Eso es lo que ocurre cuando el ajedrez se transforma en una escena viva y se encuentra con una de las leyendas más singulares de Béjar: los Hombres de Musgo.</p>
 
