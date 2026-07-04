@@ -190,7 +190,7 @@ export function Header({
             {/* Right side actions */}
             <div className="flex items-center gap-2 lg:gap-4">
               {/* Theme Toggle - Desktop */}
-              <ThemeToggle aria-label="Toggle theme" className="hidden sm:flex" />
+              <ThemeToggle aria-label="Cambiar apariencia" className="hidden sm:flex" />
 
               {/* CTA Button - Desktop */}
               {showCta && (
@@ -279,7 +279,7 @@ export function MinimalHeader({ className = '', logoHref = ROUTES.HOME }: Minima
         </a>
 
         {/* Theme Toggle - Minimal variant */}
-        <ThemeToggle aria-label="Toggle theme" />
+        <ThemeToggle aria-label="Cambiar apariencia" />
       </div>
     </header>
   );

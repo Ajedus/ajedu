@@ -8,7 +8,7 @@ import { Moon, Sun } from 'lucide-react';
 interface ThemeToggleProps {
   /**
    * Accessible label for the toggle button
-   * @default "Toggle theme"
+   * @default "Cambiar apariencia"
    */
   'aria-label'?: string;
   /**
@@ -35,7 +35,7 @@ interface ThemeToggleProps {
  * ```
  */
 export function ThemeToggle({
-  'aria-label': ariaLabel = 'Toggle theme',
+  'aria-label': ariaLabel = 'Cambiar apariencia',
   className = '',
 }: ThemeToggleProps) {
   const { resolvedTheme, toggleTheme } = useTheme();
@@ -64,10 +64,10 @@ export function ThemeToggle({
         ${className}
       `}
       aria-label={ariaLabel}
-      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
       data-testid="theme-toggle"
     >
-      <span className="sr-only">{isDark ? 'Switch to light mode' : 'Switch to dark mode'}</span>
+      <span className="sr-only">{isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}</span>
 
       {/* Sun Icon - Visible in light mode, hidden in dark mode */}
       <Sun

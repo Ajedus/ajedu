@@ -262,9 +262,9 @@ export function MobileNavigation({
               {/* Theme toggle */}
               <div className="flex items-center justify-between px-2">
                 <span className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
-                  Appearance
+                  Apariencia
                 </span>
-                <ThemeToggle aria-label="Toggle theme" />
+                <ThemeToggle aria-label="Cambiar apariencia" />
               </div>
 
               {/* CTA Button */}
