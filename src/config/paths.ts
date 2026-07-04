@@ -52,7 +52,7 @@ export const getPathConfig = (): PathConfig => {
       ? process.env.SITE_URL
       : typeof import.meta !== 'undefined' && import.meta.env?.SITE
         ? String(import.meta.env.SITE)
-        : 'https://localhost:4321';
+        : 'https://redajedu.com';
 
   const envBasePath = process?.env?.BASE_PATH || '/';
   // Fix Windows path expansion where /repo-name becomes C:/Program Files/Git/repo-name

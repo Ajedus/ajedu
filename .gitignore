@@ -56,6 +56,9 @@ lighthouse-*.json
 # Additional logs
 *.log
 
+# Generated release archives
+*.zip
+
 # Windows system files
 Thumbs.db
 ehthumbs.db

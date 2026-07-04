@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { type Variants, motion } from 'motion/react';
+import { Mail } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { GradientBackground } from '@/components/ui/GradientBackground';
 import { Section } from '@/components/ui/Section';
 import { PRESETS } from '@/config/animation';
-import { pageSEO } from '@/config/site';
+import { contact, pageSEO } from '@/config/site';
 import { cn } from '@/utils/cn';
 
 /**
@@ -25,6 +26,7 @@ export interface ContactHeroProps {
  */
 export const ContactHero: React.FC<ContactHeroProps> = ({ className }) => {
   const { description } = pageSEO.contact;
+  const emailHref = `mailto:${contact.email}`;
 
   return (
     <Section
@@ -61,6 +63,20 @@ export const ContactHero: React.FC<ContactHeroProps> = ({ className }) => {
             <p className="text-lg md:text-xl text-text-muted mb-8 leading-relaxed max-w-2xl mx-auto">
               {description}
             </p>
+            <a
+              href={emailHref}
+              className="inline-flex items-center gap-3 rounded-2xl border border-border-default bg-bg-secondary/70 px-5 py-4 text-left text-text-primary shadow-sm transition-colors hover:border-primary-500/60 hover:bg-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+            >
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-500/15 text-primary-400">
+                <Mail className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <span>
+                <span className="block text-sm font-semibold text-text-muted">
+                  Correo de contacto
+                </span>
+                <span className="block text-lg font-bold">{contact.email}</span>
+              </span>
+            </a>
           </motion.div>
         </div>
       </Container>

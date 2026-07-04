@@ -200,7 +200,7 @@ export const social: SocialLinksConfig = {
  * Update with your actual contact details
  */
 export const contact: ContactConfig = {
-  email: '',
+  email: 'redajedu@gmail.com',
   salesEmail: '',
   supportEmail: '',
   phone: '',

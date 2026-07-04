@@ -38,7 +38,7 @@ export default defineConfig({
       },
     }),
   ],
-  site: process.env.SITE_URL || 'https://ajedu.blogspot.com',
+  site: process.env.SITE_URL || 'https://redajedu.com',
   base: getBasePath(),
   output: 'static',
   trailingSlash: 'always',
