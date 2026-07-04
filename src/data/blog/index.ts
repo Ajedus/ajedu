@@ -14,11 +14,12 @@ import { post5 } from './posts/post-5';
 import { post6 } from './posts/post-6';
 import { post7 } from './posts/post-7';
 import { post8 } from './posts/post-8';
+import { post9 } from './posts/post-9';
 
 import type { BlogPost } from './types';
 
 /** Blog posts */
-export const blogPosts: BlogPost[] = [post1, post2, post3, post4, post5, post6, post7, post8];
+export const blogPosts: BlogPost[] = [post1, post9, post2, post3, post4, post5, post6, post7, post8];
 
 /** Featured blog post (hero section) */
 export const featuredBlogPost = blogPosts[0]!;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Instagram } from 'lucide-react';
+import { FacebookIcon } from '../icons/BrandIcons';
 import { company, featureFlags, footer, siteNavigation } from '../../config/site';
 import { ROUTES, resolveHref } from '../../config/paths';
 import { Button } from '../ui/Button';
@@ -15,6 +16,19 @@ interface FooterLinkProps {
   children: React.ReactNode;
   external?: boolean | undefined;
 }
+
+const socialLinks = [
+  {
+    label: 'Instagram de ajEdu',
+    href: 'https://www.instagram.com/redajedu/',
+    icon: Instagram,
+  },
+  {
+    label: 'Facebook de ajEdu',
+    href: 'https://www.facebook.com/groups/147072125436905/',
+    icon: FacebookIcon,
+  },
+] as const;
 
 function FooterLink({ href, children, external }: FooterLinkProps) {
   return (
@@ -136,6 +150,22 @@ export function Footer({ className = '', showNewsletter = true }: FooterProps) {
             <p className="text-text-secondary text-sm leading-relaxed max-w-sm">
               {company.shortDescription}
             </p>
+
+            <div className="mt-5 flex items-center gap-3" aria-label="Redes sociales de ajEdu">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  title={social.label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-primary/70 text-text-secondary transition-colors hover:border-primary-500/50 hover:text-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+                >
+                  <social.icon size={20} aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
