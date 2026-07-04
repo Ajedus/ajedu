@@ -18,7 +18,7 @@ export interface CompanyConfig {
   tagline: string;
   /** Short description for cards and previews */
   shortDescription: string;
-  /** Full description for about pages */
+  /** Full description for team pages */
   fullDescription: string;
   /** Year founded */
   foundedYear: number;
@@ -200,7 +200,7 @@ export const social: SocialLinksConfig = {
  * Update with your actual contact details
  */
 export const contact: ContactConfig = {
-  email: 'info@ajedu.com',
+  email: '',
   salesEmail: '',
   supportEmail: '',
   phone: '',
@@ -304,9 +304,10 @@ export const siteNavigation = {
   /** Main navigation items */
   main: [
     { label: 'Recursos', href: ROUTES.FEATURES },
-    { label: 'Equipo', href: ROUTES.ABOUT },
+    { label: 'Equipo', href: ROUTES.EQUIPO },
     { label: 'Blog', href: ROUTES.BLOG },
     { label: 'Contacto', href: ROUTES.CONTACT },
+    { label: 'Integrante', href: ROUTES.JOIN },
   ],
 
   /** Footer navigation sections */
@@ -321,7 +322,8 @@ export const siteNavigation = {
     company: {
       title: 'Red',
       links: [
-        { label: 'Equipo', href: ROUTES.ABOUT },
+        { label: 'Equipo', href: ROUTES.EQUIPO },
+        { label: 'Quiero ser integrante', href: ROUTES.JOIN },
         { label: 'Contacto', href: ROUTES.CONTACT },
       ],
     },
@@ -345,15 +347,7 @@ export const siteNavigation = {
   social: [],
 
   /** Contact methods for footer */
-  contact: [
-    { label: 'Email', value: contact.email, href: `mailto:${contact.email}`, icon: 'mail' },
-    {
-      label: 'Phone',
-      value: contact.phone,
-      href: `tel:${contact.phone.replace(/\s/g, '')}`,
-      icon: 'phone',
-    },
-  ],
+  contact: [],
 } as const;
 
 /**
@@ -370,13 +364,17 @@ export const pageSEO = {
     description:
       'Recursos, experiencias y propuestas para llevar el ajedrez educativo al aula.',
   },
-  about: {
+  equipo: {
     title: 'Equipo',
     description: `Conoce al equipo y la comunidad que impulsa ${company.name}.`,
   },
   contact: {
     title: 'Contacto',
     description: `Contacta con ${company.name} para compartir recursos, experiencias o proyectos.`,
+  },
+  join: {
+    title: 'Quiero ser integrante',
+    description: `Formulario para solicitar la incorporacion a la comunidad ${company.name}.`,
   },
   support: {
     title: 'Ayuda',

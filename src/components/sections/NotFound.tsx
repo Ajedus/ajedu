@@ -10,7 +10,7 @@ export const NotFound: React.FC = () => {
   const popularPages = [
     { label: 'Inicio', href: resolveHref(ROUTES.HOME) },
     { label: 'Recursos', href: resolveHref(ROUTES.FEATURES) },
-    { label: 'Equipo', href: resolveHref(ROUTES.ABOUT) },
+    { label: 'Equipo', href: resolveHref(ROUTES.EQUIPO) },
     { label: 'Blog', href: resolveHref(ROUTES.BLOG) },
     { label: 'Contacto', href: resolveHref(ROUTES.CONTACT) },
   ];

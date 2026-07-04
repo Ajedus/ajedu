@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Mail } from 'lucide-react';
 import { type Variants, motion } from 'motion/react';
 import { Container } from '@/components/ui/Container';
 import { GradientBackground } from '@/components/ui/GradientBackground';
 import { Section } from '@/components/ui/Section';
 import { PRESETS } from '@/config/animation';
-import { contact, pageSEO } from '@/config/site';
+import { pageSEO } from '@/config/site';
 import { cn } from '@/utils/cn';
 
 /**
@@ -62,15 +61,6 @@ export const ContactHero: React.FC<ContactHeroProps> = ({ className }) => {
             <p className="text-lg md:text-xl text-text-muted mb-8 leading-relaxed max-w-2xl mx-auto">
               {description}
             </p>
-            <a
-              href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-3 rounded-xl border border-border-default bg-bg-primary/70 px-5 py-3 text-base font-semibold text-text-primary shadow-sm backdrop-blur-sm transition-colors hover:border-primary-500 hover:text-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 text-white">
-                <Mail className="h-5 w-5" aria-hidden="true" />
-              </span>
-              {contact.email}
-            </a>
           </motion.div>
         </div>
       </Container>

@@ -30,7 +30,7 @@ La web recoge contenidos para llevar el ajedrez al aula, compartir experiencias 
 - Equipo, coordinacion e integrantes.
 - Blog con articulos, experiencias, congresos e investigacion.
 - Webs colaboradoras y proyectos amigos.
-- Pagina de contacto con `info@ajedu.com`.
+- Pagina de contacto.
 - SEO final: sitemap, robots.txt y metadatos propios de ajEdu.
 
 ## Arquitectura
@@ -82,7 +82,7 @@ Repositorio GitHub
 |   +-- layouts/
 |   +-- pages/
 |   |   +-- index.astro
-|   |   +-- about.astro
+|   |   +-- equipo.astro
 |   |   +-- features.astro
 |   |   +-- contact.astro
 |   |   +-- blog/
@@ -100,7 +100,7 @@ Repositorio GitHub
 | --- | --- |
 | `/` | Portada de ajEdu |
 | `/features/` | Recursos de ajedrez educativo |
-| `/about/` | Equipo e integrantes |
+| `/equipo/` | Equipo e integrantes |
 | `/blog/` | Articulos y experiencias |
 | `/contact/` | Contacto |
 | `/privacy/` | Politica de privacidad |

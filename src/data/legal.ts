@@ -52,7 +52,7 @@ export const termsData: LegalDocument = {
       id: 'contact',
       title: '6. Contacto',
       content:
-        'Para comunicar errores, proponer recursos o solicitar cambios, puede escribirse a info@ajedu.com.',
+        'Para comunicar errores, proponer recursos o solicitar cambios, puede utilizarse la pagina de contacto de la web.',
     },
   ],
 };
@@ -69,9 +69,9 @@ export const privacyData: LegalDocument = {
     },
     {
       id: 'contact',
-      title: '2. Contacto por correo',
+      title: '2. Contacto',
       content:
-        'Si una persona escribe a info@ajedu.com, se utilizara la informacion facilitada exclusivamente para responder a la consulta, propuesta o comunicacion recibida.',
+        'Si una persona contacta con ajEdu, se utilizara la informacion facilitada exclusivamente para responder a la consulta, propuesta o comunicacion recibida.',
     },
     {
       id: 'downloads',

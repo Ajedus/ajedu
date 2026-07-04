@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle, Mail } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { company, featureFlags, footer, siteNavigation } from '../../config/site';
 import { ROUTES, resolveHref } from '../../config/paths';
 import { Button } from '../ui/Button';
@@ -87,7 +87,6 @@ function NewsletterSignup({ onSubmit }: { onSubmit?: (email: string) => void }) 
 export function Footer({ className = '', showNewsletter = true }: FooterProps) {
   const currentYear = new Date().getFullYear();
   const copyrightText = footer.copyright.replace('{year}', String(currentYear));
-  const contactEmail = siteNavigation.contact[0]?.value;
 
   return (
     <footer
@@ -202,20 +201,6 @@ export function Footer({ className = '', showNewsletter = true }: FooterProps) {
               <span>{footer.registrationNumber}</span>
             </div>
 
-            {contactEmail && (
-              <div className="flex items-center gap-4 text-sm">
-                <Link
-                  href={`mailto:${contactEmail}`}
-                  className="text-text-secondary hover:text-text-primary transition-colors
-                             flex items-center gap-1.5 focus:outline-none focus-visible:ring-2
-                             focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded"
-                  showExternalIcon={false}
-                >
-                  <Mail className="w-4 h-4" />
-                  <span className="hidden sm:inline">{contactEmail}</span>
-                </Link>
-              </div>
-            )}
           </div>
         </div>
       </div>

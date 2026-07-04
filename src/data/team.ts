@@ -18,16 +18,6 @@ export interface TeamMember {
   joinedAt: string;
 }
 
-export const teamMembers: TeamMember[] = [
-  {
-    id: 'joaquin-fernandez-amigo',
-    name: 'Joaquin Fernandez Amigo',
-    role: 'Coordinacion ajEdu',
-    bio: 'Coordina la red internacional ajEdu y promueve proyectos, encuentros y experiencias de ajedrez educativo.',
-    avatar: '/images/team/joaquin-fernandez-amigo.jpg',
-    social: [],
-    department: 'leadership',
-    joinedAt: '2005-01-01',
-  },
-  ...ajeduCommunityMembers.filter((member) => member.id !== 'ajedu-member-027'),
-];
+export const teamMembers: TeamMember[] = [...ajeduCommunityMembers].sort((a, b) =>
+  a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }),
+);

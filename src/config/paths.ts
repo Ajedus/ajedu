@@ -132,7 +132,7 @@ export const getImageSrcSet = (baseName: string, sizes: number[] = [400, 800, 12
 
 /**
  * Resolves a page route path
- * @param route - Route path (e.g., 'blog', 'about/team')
+ * @param route - Route path (e.g., 'blog', 'equipo')
  * @returns Resolved route with base prefix and trailing slash
  */
 export const getPagePath = (route: string = ''): string => {
@@ -212,7 +212,8 @@ export const ROUTES = {
   // Main pages
   HOME: '/',
   FEATURES: '/features/',
-  ABOUT: '/about/',
+  EQUIPO: '/equipo/',
+  JOIN: '/quiero-ser-integrante/',
   CONTACT: '/contact/',
   BLOG: '/blog/',
 
@@ -233,9 +234,10 @@ export const ROUTES = {
 export const NAVIGATION = {
   main: [
     { label: 'Recursos', href: ROUTES.FEATURES },
-    { label: 'Equipo', href: ROUTES.ABOUT },
+    { label: 'Equipo', href: ROUTES.EQUIPO },
     { label: 'Blog', href: ROUTES.BLOG },
     { label: 'Contacto', href: ROUTES.CONTACT },
+    { label: 'Integrante', href: ROUTES.JOIN },
   ],
   footer: {
     product: [
@@ -243,7 +245,8 @@ export const NAVIGATION = {
       { label: 'Blog', href: ROUTES.BLOG },
     ],
     company: [
-      { label: 'Equipo', href: ROUTES.ABOUT },
+      { label: 'Equipo', href: ROUTES.EQUIPO },
+      { label: 'Quiero ser integrante', href: ROUTES.JOIN },
       { label: 'Contacto', href: ROUTES.CONTACT },
     ],
     resources: [
