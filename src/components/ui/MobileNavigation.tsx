@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { siteNavigation } from '../../config/site';
 import { ROUTES, isActiveRoute, resolveHref } from '../../config/paths';
-import { useReducedMotion } from '../../utils/reducedMotion';
 
 /**
  * Props for the MobileNavigation component
@@ -124,13 +122,12 @@ function useFocusTrap(
  *
  * A full-featured mobile navigation drawer with:
  * - Focus trap when open (accessibility requirement)
- * - Smooth open/close animations using framer-motion
+ * - Lightweight CSS-based open/close states
  * - Navigation links from site config with active state highlighting
  * - Theme toggle
  * - Primary CTA button
  * - Backdrop overlay with click-to-close
  * - Escape key handling
- * - Reduced motion support
  */
 export function MobileNavigation({
   isOpen,
@@ -143,7 +140,6 @@ export function MobileNavigation({
 }: MobileNavigationProps): React.ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const { prefersReducedMotion } = useReducedMotion();
 
   // Apply focus trap
   useFocusTrap(containerRef as React.RefObject<HTMLElement | null>, isOpen, onClose);
@@ -178,33 +174,19 @@ export function MobileNavigation({
   }, [onClose]);
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
         <>
-          {/* Backdrop overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+          <div
             className="fixed inset-0 bg-bg-primary/60 backdrop-blur-sm z-40 md:hidden"
             onClick={onClose}
             aria-hidden="true"
           />
 
-          {/* Mobile navigation drawer */}
-          <motion.div
+          <div
             ref={containerRef}
             id="mobile-navigation"
             data-testid="mobile-menu"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={
-              prefersReducedMotion
-                ? { duration: 0 }
-                : { type: 'spring', damping: 25, stiffness: 200 }
-            }
             className="fixed top-0 right-0 bottom-0 w-full max-w-[min(24rem,calc(100vw-2rem))] bg-bg-primary border-l border-border-default shadow-2xl z-50 md:hidden flex flex-col"
             role="dialog"
             aria-modal="true"
@@ -231,15 +213,10 @@ export function MobileNavigation({
               aria-label="Mobile navigation"
             >
               <ul className="space-y-2">
-                {siteNavigation.main.map((item, index) => {
+                {siteNavigation.main.map((item) => {
                   const active = isActiveRoute(item.href, currentPath);
                   return (
-                    <motion.li
-                      key={item.href}
-                      initial={prefersReducedMotion ? {} : { opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + index * 0.05 }}
-                    >
+                    <li key={item.href}>
                       <a
                         href={resolveHref(item.href)}
                         onClick={handleNavClick}
@@ -251,7 +228,7 @@ export function MobileNavigation({
                       >
                         {item.label}
                       </a>
-                    </motion.li>
+                    </li>
                   );
                 })}
               </ul>
@@ -278,10 +255,10 @@ export function MobileNavigation({
                 </a>
               )}
             </div>
-          </motion.div>
+          </div>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 }
 

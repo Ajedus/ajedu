@@ -1,0 +1,272 @@
+---
+import { siteNavigation } from '../../config/site';
+import { ROUTES, isActiveRoute, resolveHref } from '../../config/paths';
+
+interface Props {
+  variant?: 'default' | 'minimal';
+}
+
+const { variant = 'default' } = Astro.props as Props;
+const currentPath = Astro.url.pathname;
+const brandName = 'AJEDU';
+---
+
+{
+  variant === 'minimal' ? (
+    <header class="w-full py-4 px-4 sm:px-6 lg:px-8" role="banner" aria-label="Cabecera">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a
+          href={resolveHref(ROUTES.HOME)}
+          class="inline-flex items-center gap-2 text-text-primary hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg"
+          aria-label={`${brandName} - Inicio`}
+        >
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
+            <span class="text-xl leading-none text-white" aria-hidden="true">
+              &#9823;
+            </span>
+          </div>
+          <span class="text-lg font-bold tracking-tight">{brandName}</span>
+        </a>
+        <button
+          type="button"
+          data-theme-toggle
+          class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-secondary/70 text-text-secondary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+          aria-label="Cambiar apariencia"
+          title="Apariencia"
+        >
+          <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+  ) : (
+    <>
+      <header
+        data-site-header
+        class="fixed top-0 left-0 right-0 z-40 bg-transparent py-2 transition-all duration-300 ease-in-out pt-[env(safe-area-inset-top)]"
+        role="banner"
+        aria-label="Cabecera"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div data-header-inner class="flex h-20 lg:h-24 items-center justify-between transition-all duration-300">
+            <a
+              href={resolveHref(ROUTES.HOME)}
+              class="flex items-center gap-2 text-text-primary hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg"
+              aria-label={`${brandName} - Inicio`}
+            >
+              <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-sm">
+                <span class="text-xl lg:text-2xl leading-none text-white" aria-hidden="true">
+                  &#9823;
+                </span>
+              </div>
+              <span class="text-lg lg:text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-text-primary/70">
+                {brandName}
+              </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-2" role="navigation" aria-label="Navegacion principal">
+              {
+                siteNavigation.main.map((item) => {
+                  const active = isActiveRoute(item.href, currentPath);
+                  return (
+                    <a
+                      href={resolveHref(item.href)}
+                      class={`relative px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg ${
+                        active
+                          ? 'text-text-primary bg-bg-secondary'
+                          : 'text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50'
+                      }`}
+                      aria-current={active ? 'page' : undefined}
+                    >
+                      {item.label}
+                      {active && (
+                        <span class="absolute bottom-1 left-4 right-4 h-0.5 bg-primary-500 rounded-full" aria-hidden="true" />
+                      )}
+                    </a>
+                  );
+                })
+              }
+            </nav>
+
+            <div class="flex items-center gap-2 lg:gap-4">
+              <button
+                type="button"
+                data-theme-toggle
+                class="hidden h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-secondary/70 text-text-secondary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:inline-flex"
+                aria-label="Cambiar apariencia"
+                title="Apariencia"
+              >
+                <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                </svg>
+                <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+                </svg>
+              </button>
+              <button
+                type="button"
+                data-menu-button
+                class="p-2 text-text-secondary hover:text-text-primary hover:bg-bg-secondary rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 md:hidden"
+                aria-expanded="false"
+                aria-controls="mobile-navigation"
+                aria-label="Abrir menu"
+              >
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div data-mobile-backdrop class="fixed inset-0 z-40 hidden bg-bg-primary/60 backdrop-blur-sm md:hidden" aria-hidden="true"></div>
+      <aside
+        id="mobile-navigation"
+        data-mobile-menu
+        class="fixed top-0 right-0 bottom-0 z-50 hidden w-full max-w-[min(24rem,calc(100vw-2rem))] flex-col border-l border-border-default bg-bg-primary shadow-2xl md:hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu movil"
+      >
+        <div class="flex items-center justify-between px-6 py-5 pt-[calc(1.25rem+env(safe-area-inset-top))] border-b border-border-default/50">
+          <span class="text-xl font-bold text-text-primary tracking-tight">Menu</span>
+          <button
+            type="button"
+            data-menu-close
+            class="p-2 text-text-secondary hover:text-text-primary hover:bg-bg-secondary rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+            aria-label="Cerrar menu"
+          >
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-6 px-4" role="navigation" aria-label="Navegacion movil">
+          <ul class="space-y-2">
+            {
+              siteNavigation.main.map((item) => {
+                const active = isActiveRoute(item.href, currentPath);
+                return (
+                  <li>
+                    <a
+                      href={resolveHref(item.href)}
+                      class={`block px-5 py-4 text-lg font-semibold rounded-2xl transition-all ${
+                        active
+                          ? 'text-primary-600 bg-primary-500/10 dark:text-primary-400 dark:bg-primary-500/20'
+                          : 'text-text-secondary hover:text-text-primary hover:bg-bg-secondary'
+                      } focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2`}
+                      aria-current={active ? 'page' : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+
+        <div class="border-t border-border-default/50 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] space-y-6 bg-bg-secondary/30">
+          <div class="flex items-center justify-between px-2">
+            <span class="text-sm font-semibold text-text-secondary uppercase tracking-wider">Apariencia</span>
+            <button
+              type="button"
+              data-theme-toggle
+              class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-secondary/70 text-text-secondary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+              aria-label="Cambiar apariencia"
+              title="Apariencia"
+            >
+              <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+              <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </>
+  )
+}
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+
+    const setTheme = (theme) => {
+      root.setAttribute('data-theme', theme);
+      root.style.colorScheme = theme;
+      root.classList.toggle('dark', theme === 'dark');
+      try {
+        localStorage.setItem('theme', theme);
+      } catch {}
+    };
+
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const current = root.classList.contains('dark') ? 'dark' : 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    });
+
+    const header = document.querySelector('[data-site-header]');
+    const headerInner = document.querySelector('[data-header-inner]');
+    const syncHeader = () => {
+      if (!header || !headerInner) return;
+      const scrolled = window.scrollY > 20;
+      header.classList.toggle('bg-transparent', !scrolled);
+      header.classList.toggle('py-2', !scrolled);
+      header.classList.toggle('bg-bg-primary/80', scrolled);
+      header.classList.toggle('backdrop-blur-xl', scrolled);
+      header.classList.toggle('shadow-md', scrolled);
+      header.classList.toggle('border-b', scrolled);
+      header.classList.toggle('border-border-default/50', scrolled);
+      headerInner.classList.toggle('h-16', scrolled);
+      headerInner.classList.toggle('h-20', !scrolled);
+      headerInner.classList.toggle('lg:h-24', !scrolled);
+    };
+    syncHeader();
+    window.addEventListener('scroll', syncHeader, { passive: true });
+
+    const button = document.querySelector('[data-menu-button]');
+    const closeButton = document.querySelector('[data-menu-close]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    const backdrop = document.querySelector('[data-mobile-backdrop]');
+
+    const setMenu = (open) => {
+      if (!button || !menu || !backdrop) return;
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Cerrar menu' : 'Abrir menu');
+      menu.classList.toggle('hidden', !open);
+      menu.classList.toggle('flex', open);
+      backdrop.classList.toggle('hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        closeButton?.focus();
+      } else {
+        button.focus();
+      }
+    };
+
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      setMenu(open);
+    });
+    closeButton?.addEventListener('click', () => setMenu(false));
+    backdrop?.addEventListener('click', () => setMenu(false));
+    menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMenu(false);
+    });
+  })();
+</script>

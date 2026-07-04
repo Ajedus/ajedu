@@ -1,11 +1,8 @@
 ---
 import '../styles/globals.css';
-import { ClientRouter } from 'astro:transitions';
 import { getThemeScript } from '../components/ThemeProvider';
-import { ClientHeader } from '../components/ClientHeader';
-import { ClientMinimalHeader } from '../components/ClientMinimalHeader';
+import SiteHeader from '../components/layout/SiteHeader.astro';
 import { Footer, MinimalFooter } from '../components/layout/Footer';
-import { Toaster } from '../components/ui/Toast';
 import {
   OrganizationSchema,
   WebSiteSchema,
@@ -35,7 +32,6 @@ interface Props {
   twitterCard?: 'summary' | 'summary_large_image';
   robots?: string;
   preloadImages?: PreloadImage[];
-  transitionAnimate?: 'fade' | 'slide' | 'none';
 }
 
 const {
@@ -49,7 +45,6 @@ const {
   twitterCard,
   robots,
   preloadImages = [],
-  transitionAnimate = 'fade',
 } = Astro.props as Props;
 
 // Auto-generate crumbs if not provided
@@ -123,87 +118,6 @@ const finalCrumbs = crumbs || defaultCrumbs;
     <!-- Theme script to prevent flash of wrong theme -->
     <script is:inline set:html={getThemeScript('system')} />
 
-    <!-- Theme persistence during Astro View Transitions -->
-    <script>
-      // Reapply theme after each page transition to prevent flash of wrong theme
-      document.addEventListener('astro:after-swap', () => {
-        try {
-          const stored = localStorage.getItem('theme');
-          let theme = 'light';
-
-          if (stored === 'light' || stored === 'dark') {
-            theme = stored;
-          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            theme = 'dark';
-          }
-
-          document.documentElement.setAttribute('data-theme', theme);
-          document.documentElement.style.colorScheme = theme;
-
-          if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        } catch {
-          // Silent fail if localStorage is not available
-        }
-      });
-    </script>
-
-    <!-- Redirect handler for SPA routing on GitHub Pages -->
-    <script>
-      import { handleRedirect } from '../utils/routing';
-      handleRedirect();
-    </script>
-
-    <!-- Page Transitions -->
-    <ClientRouter />
-
-    <style is:global>
-      /* 
-        Optimized Page Transitions
-        - Reduced animation duration for faster perceived performance
-        - Simplified animations to reduce GPU load
-        - Added will-change hints for compositor optimization
-      */
-      ::view-transition-old(root) {
-        animation: 150ms ease-out both fade-out;
-        will-change: opacity;
-      }
-
-      ::view-transition-new(root) {
-        animation: 250ms cubic-bezier(0.22, 1, 0.36, 1) both fade-in;
-        will-change: opacity, transform;
-      }
-
-      @keyframes fade-in {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-      }
-      @keyframes fade-out {
-        to {
-          opacity: 0;
-          transform: translateY(-8px);
-        }
-      }
-
-      /* Respect reduced motion - disable animations entirely */
-      @media (prefers-reduced-motion: reduce) {
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-          animation: none !important;
-        }
-      }
-
-      /* Optimize performance during transitions - disable heavy effects */
-      ::view-transition-old(root) *,
-      ::view-transition-new(root) * {
-        animation-play-state: paused !important;
-      }
-    </style>
   </head>
   <body class="min-h-screen bg-bg-primary text-text-primary antialiased">
     <!-- Skip to content link for accessibility -->
@@ -214,8 +128,8 @@ const finalCrumbs = crumbs || defaultCrumbs;
       Skip to content
     </a>
 
-    {headerVariant === 'default' && <ClientHeader client:load transition:persist />}
-    {headerVariant === 'minimal' && <ClientMinimalHeader client:load transition:persist />}
+    {headerVariant === 'default' && <SiteHeader />}
+    {headerVariant === 'minimal' && <SiteHeader variant="minimal" />}
 
     <main
       id="main-content"
@@ -223,14 +137,11 @@ const finalCrumbs = crumbs || defaultCrumbs;
       tabindex="-1"
       role="main"
       aria-label="Main content"
-      transition:animate={transitionAnimate}
     >
       <slot />
     </main>
 
-    {footerVariant === 'default' && <Footer client:load transition:persist />}
-    {footerVariant === 'minimal' && <MinimalFooter client:load transition:persist />}
-
-    <Toaster client:load />
+    {footerVariant === 'default' && <Footer />}
+    {footerVariant === 'minimal' && <MinimalFooter />}
   </body>
 </html>

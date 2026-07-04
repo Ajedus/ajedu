@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { type Variants, motion } from 'motion/react';
-import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { featureStats } from '@/data';
-import { PRESETS } from '@/config/animation';
 import { cn } from '@/utils/cn';
 
 /**
@@ -55,13 +52,7 @@ export const StatsSection: React.FC<StatsSectionProps> = ({
     >
       <Container>
         {/* Section Header */}
-        <motion.div
-          initial={false}
-          whileInView="animate"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={PRESETS.fadeInUp as unknown as Variants}
-          className="mx-auto mb-16 max-w-2xl text-center will-change-transform"
-        >
+        <div className="mx-auto mb-16 max-w-2xl text-center">
           <h2
             id={`${id}-heading`}
             className="mb-4 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl"
@@ -69,20 +60,19 @@ export const StatsSection: React.FC<StatsSectionProps> = ({
             {title}
           </h2>
           <p className="text-lg text-text-secondary">{subtitle}</p>
-        </motion.div>
+        </div>
 
         {/* Stats Grid */}
-        <motion.div
-          initial={false}
-          whileInView="animate"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={PRESETS.stagger as unknown as Variants}
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 will-change-transform"
-        >
-          {featureStats.map((stat, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {featureStats.map((stat, index) => {
+            const formattedValue = stat.value.toLocaleString(undefined, {
+              minimumFractionDigits: stat.value % 1 !== 0 ? 2 : 0,
+              maximumFractionDigits: stat.value % 1 !== 0 ? 2 : 0,
+            });
+
+            return (
+            <div
               key={index}
-              variants={PRESETS.fadeInUp as unknown as Variants}
               className="group relative overflow-hidden rounded-2xl border border-border-default bg-bg-secondary p-8 transition-colors hover:border-brand-primary/50"
             >
               {/* Decorative Background Blur */}
@@ -90,20 +80,19 @@ export const StatsSection: React.FC<StatsSectionProps> = ({
 
               <div className="relative z-10">
                 <div className="mb-2 flex items-baseline gap-1">
-                  <AnimatedCounter
-                    value={stat.value}
-                    prefix={stat.prefix}
-                    suffix={stat.suffix}
-                    decimals={stat.value % 1 !== 0 ? 2 : 0}
-                    className="text-4xl font-bold tracking-tight text-brand-primary sm:text-5xl"
-                  />
+                  <span className="text-4xl font-bold tracking-tight text-brand-primary sm:text-5xl">
+                    {stat.prefix}
+                    {formattedValue}
+                    {stat.suffix}
+                  </span>
                 </div>
                 <div className="text-lg font-semibold text-text-primary">{stat.label}</div>
                 <p className="mt-2 text-sm text-text-secondary">{stat.description}</p>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            </div>
+            );
+          })}
+        </div>
       </Container>
     </Section>
   );

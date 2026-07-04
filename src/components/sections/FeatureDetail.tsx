@@ -23,7 +23,6 @@ import {
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { featureDetails } from '@/data/features';
-import { FadeInUp } from '@/components/animation/AnimatedElement';
 import { cn } from '@/utils/cn';
 import { getAssetPath } from '@/config/paths';
 
@@ -98,7 +97,7 @@ export const FeatureDetail: React.FC<FeatureDetailProps> = ({ className }) => {
               >
                 {/* Text Content */}
                 <div className="flex-1 space-y-6 text-center lg:text-left">
-                  <FadeInUp triggerOnView threshold={0.2}>
+                  <div>
                     <div className="inline-flex p-3 rounded-xl bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mb-2 shadow-sm">
                       <IconComponent size={24} aria-hidden="true" />
                     </div>
@@ -128,12 +127,12 @@ export const FeatureDetail: React.FC<FeatureDetailProps> = ({ className }) => {
                         ))}
                       </ul>
                     )}
-                  </FadeInUp>
+                  </div>
                 </div>
 
                 {/* Illustration/Image */}
                 <div className="flex-1 w-full max-w-2xl">
-                  <FadeInUp triggerOnView delay={0.2} threshold={0.2}>
+                  <div>
                     <div className="relative group">
                       {/* Decorative gradient blur background */}
                       <div className="absolute -inset-4 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 rounded-3xl blur-2xl group-hover:opacity-100 transition-opacity opacity-0 duration-500" />
@@ -163,7 +162,7 @@ export const FeatureDetail: React.FC<FeatureDetailProps> = ({ className }) => {
                         )}
                       </div>
                     </div>
-                  </FadeInUp>
+                  </div>
                 </div>
               </div>
             </Container>

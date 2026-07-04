@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Link as LinkIcon } from 'lucide-react';
 import { FacebookIcon, LinkedinIcon, XIcon } from '@/components/icons/BrandIcons';
-import { IconButton } from './Button';
-import { toast } from './Toast';
 import { cn } from '@/utils/cn';
 
 /**
@@ -39,6 +37,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
   showLabels = false,
 }) => {
   const [currentUrl, setCurrentUrl] = React.useState<string>('');
+  const [copied, setCopied] = React.useState(false);
 
   React.useEffect(() => {
     // Get current URL if not provided (browser only)
@@ -54,9 +53,9 @@ export const SocialShare: React.FC<SocialShareProps> = ({
 
     try {
       await navigator.clipboard.writeText(currentUrl);
-      toast.success('Link copied to clipboard');
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
     } catch (err) {
-      toast.error('Failed to copy link');
       console.error('Failed to copy link: ', err);
     }
   };
@@ -114,15 +113,18 @@ export const SocialShare: React.FC<SocialShareProps> = ({
 
       <div className="h-4 w-px bg-border-default mx-1 hidden sm:block" />
 
-      <IconButton
-        icon={<LinkIcon size={20} />}
-        aria-label="Copy link to clipboard"
-        variant="ghost"
-        size="md"
+      <button
+        type="button"
+        aria-label="Copiar enlace"
         onClick={handleCopyLink}
-        className="text-text-secondary hover:text-text-primary"
-        title="Copy link"
-      />
+        className="inline-flex items-center gap-2 rounded-lg p-2 text-text-secondary transition-colors hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+        title={copied ? 'Enlace copiado' : 'Copiar enlace'}
+      >
+        <LinkIcon size={20} aria-hidden="true" />
+        {showLabels && (
+          <span className="text-sm font-medium">{copied ? 'Copiado' : 'Copiar'}</span>
+        )}
+      </button>
     </div>
   );
 };

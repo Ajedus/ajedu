@@ -1,11 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { motion } from 'motion/react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { Link } from '../ui/Link';
 import { MobileMenuButton, MobileNavigation } from '../ui/MobileNavigation';
 import { siteNavigation } from '../../config/site';
 import { ROUTES, isActiveRoute, resolveHref } from '../../config/paths';
-import { useReducedMotion } from '../../utils/reducedMotion';
 
 const brandName = 'AJEDU';
 
@@ -64,7 +62,6 @@ export function Header({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('');
-  const { prefersReducedMotion } = useReducedMotion();
 
   // Handle scroll effect for background transition
   const handleScroll = useCallback(() => {
@@ -159,27 +156,15 @@ export function Header({
                   >
                     {item.label}
                     {active && (
-                      <motion.span
-                        layoutId="activeNavIndicator"
+                      <span
                         className="absolute inset-0 bg-bg-secondary rounded-lg -z-10"
-                        initial={false}
-                        transition={
-                          prefersReducedMotion
-                            ? { duration: 0 }
-                            : { type: 'spring', stiffness: 380, damping: 30 }
-                        }
+                        aria-hidden="true"
                       />
                     )}
                     {active && (
-                      <motion.span
-                        layoutId="activeNavLine"
+                      <span
                         className="absolute bottom-1 left-4 right-4 h-0.5 bg-primary-500 rounded-full"
-                        initial={false}
-                        transition={
-                          prefersReducedMotion
-                            ? { duration: 0 }
-                            : { type: 'spring', stiffness: 380, damping: 30 }
-                        }
+                        aria-hidden="true"
                       />
                     )}
                   </a>
