@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="es"> <head><meta charset="utf-8"><script>
+    // Single Page Apps for GitHub Pages
+    // https://github.com/rafgraph/spa-github-pages
+
+    (function () {
+      // Get the repository name from the path
+      const pathSegments = window.location.pathname.split('/');
+      const repoName = pathSegments[1]; // First segment after domain
+
+      // Check if we're on a project page (subdirectory)
+      // On GitHub Pages, hostname is user.github.io
+      const isProjectPage =
+        window.location.hostname.includes('github.io') &&
+        pathSegments.length > 1 &&
+        repoName &&
+        !repoName.includes('.');
+
+      // Build the redirect URL
+      let redirectUrl;
+      if (isProjectPage) {
+        // Project page: /repo-name/path -> /repo-name/?redirect=/path
+        const remainingPath = pathSegments.slice(2).join('/');
+        redirectUrl = '/' + repoName + '/?redirect=/' + remainingPath + window.location.hash;
+      } else {
+        // Root page: /path -> /?redirect=/path
+        redirectUrl = '/?redirect=' + window.location.pathname + window.location.hash;
+      }
+
+      // Preserve query parameters
+      if (window.location.search) {
+        redirectUrl += '&' + window.location.search.slice(1);
+      }
+
+      window.location.replace(redirectUrl);
+    })();
+  </script><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" href="/favicon.ico" sizes="any"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><!-- Theme Color for Mobile Browsers --><meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)"><!-- Preload critical images --><!-- SEO Meta Tags --><title>Pagina no encontrada | ajEdu</title><meta name="description" content="Red internacional de ajedrez educativo con recursos, experiencias y proyectos compartidos desde 2005."/><link rel="canonical" href="https://redajedu.com/404/"/><meta name="robots" content="index, follow"/><meta name="author" content="ajEdu"/><meta name="theme-color" content="#1d4ed8"/><meta name="keywords" content="ajEdu, ajedrez educativo, ajedrez en el aula, educación, docentes, recursos educativos, pensamiento crítico, valores, convivencia"/><meta property="og:site_name" content="ajEdu"/><meta property="og:type" content="website"/><meta property="og:title" content="Pagina no encontrada | ajEdu"/><meta property="og:description" content="Red internacional de ajedrez educativo con recursos, experiencias y proyectos compartidos desde 2005."/><meta property="og:url" content="https://redajedu.com/404/"/><meta property="og:image" content="https://redajedu.com/images/og-ajedu.png"/><meta property="og:image:secure_url" content="https://redajedu.com/images/og-ajedu.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="ajEdu - Red Internacional Ajedrez y Educación"/><meta property="og:locale" content="es_ES"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Pagina no encontrada | ajEdu"/><meta name="twitter:description" content="Red internacional de ajedrez educativo con recursos, experiencias y proyectos compartidos desde 2005."/><meta name="twitter:image" content="https://redajedu.com/images/og-ajedu.png"/><meta name="twitter:image:alt" content="ajEdu - Red Internacional Ajedrez y Educación"/><!-- SEO Schemas --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ajEdu","alternateName":"Red Internacional Ajedrez y Educación","description":"Recursos, experiencias, publicaciones y proyectos para impulsar el ajedrez educativo desde 2005.","url":"https://redajedu.com","logo":{"@type":"ImageObject","url":"https://redajedu.com/images/ajedu-favicon.png"},"sameAs":["https://github.com/Ajedus","https://www.instagram.com/redajedu/","https://www.facebook.com/groups/147072125436905/"],"contactPoint":[{"@type":"ContactPoint","contactType":"información","email":"redajedu@gmail.com","availableLanguage":["es"]}],"founder":{"@type":"Organization","name":"ajEdu"},"foundingDate":"2005"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ajEdu","alternateName":"Red Internacional Ajedrez y Educación","url":"https://redajedu.com","description":"Recursos, experiencias, publicaciones y proyectos para impulsar el ajedrez educativo desde 2005."}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://redajedu.com/"},{"@type":"ListItem","position":2,"name":"404","item":"https://redajedu.com/404/"}]}</script><!-- Theme script to prevent flash of wrong theme --><script>
+    (function() {
+      function getTheme() {
+        try {
+          const stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') return stored;
+        } catch (e) {}
+        
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      }
+      
+      const theme = getTheme();
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script><link rel="stylesheet" href="/assets/Layout-BH2EzPmb.css"></head> <body class="min-h-screen bg-bg-primary text-text-primary antialiased"> <!-- Skip to content link for accessibility --> <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 transition-all">
+Skip to content
+</a>  <header data-site-header class="fixed top-0 left-0 right-0 z-40 bg-transparent py-2 transition-all duration-300 ease-in-out pt-[env(safe-area-inset-top)]" role="banner" aria-label="Cabecera"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div data-header-inner class="flex h-20 lg:h-24 items-center justify-between transition-all duration-300"> <a href="/" class="flex items-center gap-2 text-text-primary hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg" aria-label="AJEDU - Inicio"> <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-sm"> <span class="text-xl lg:text-2xl leading-none text-white" aria-hidden="true">
+&#9823;
+</span> </div> <span class="text-lg lg:text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-text-primary/70"> AJEDU </span> </a> <nav class="hidden md:flex items-center gap-2" role="navigation" aria-label="Navegacion principal"> <a href="/features/" class="relative px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50"> Recursos  </a><a href="/equipo/" class="relative px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50"> Equipo  </a><a href="/congresosajedu/" class="relative px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50"> Congresos  </a><a href="/blog/" class="relative px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50"> Blog  </a><a href="/contact/" class="relative px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50"> Contacto  </a> </nav> <div class="flex items-center gap-2 lg:gap-4"> <button type="button" data-theme-toggle class="hidden h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-secondary/70 text-text-secondary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:inline-flex" aria-label="Cambiar apariencia" title="Apariencia"> <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path> </svg> <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path> </svg> </button> <button type="button" data-menu-button class="p-2 text-text-secondary hover:text-text-primary hover:bg-bg-secondary rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 md:hidden" aria-expanded="false" aria-controls="mobile-navigation" aria-label="Abrir menu"> <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> </div> </header> <div data-mobile-backdrop class="fixed inset-0 z-40 hidden bg-bg-primary/60 backdrop-blur-sm md:hidden" aria-hidden="true"></div> <aside id="mobile-navigation" data-mobile-menu class="fixed top-0 right-0 bottom-0 z-50 hidden w-full max-w-[min(24rem,calc(100vw-2rem))] flex-col border-l border-border-default bg-bg-primary shadow-2xl md:hidden" role="dialog" aria-modal="true" aria-label="Menu movil"> <div class="flex items-center justify-between px-6 py-5 pt-[calc(1.25rem+env(safe-area-inset-top))] border-b border-border-default/50"> <span class="text-xl font-bold text-text-primary tracking-tight">Menu</span> <button type="button" data-menu-close class="p-2 text-text-secondary hover:text-text-primary hover:bg-bg-secondary rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2" aria-label="Cerrar menu"> <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M18 6 6 18M6 6l12 12"></path> </svg> </button> </div> <nav class="flex-1 overflow-y-auto py-6 px-4" role="navigation" aria-label="Navegacion movil"> <ul class="space-y-2"> <li> <a href="/features/" class="block px-5 py-4 text-lg font-semibold rounded-2xl transition-all text-text-secondary hover:text-text-primary hover:bg-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"> Recursos </a> </li><li> <a href="/equipo/" class="block px-5 py-4 text-lg font-semibold rounded-2xl transition-all text-text-secondary hover:text-text-primary hover:bg-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"> Equipo </a> </li><li> <a href="/congresosajedu/" class="block px-5 py-4 text-lg font-semibold rounded-2xl transition-all text-text-secondary hover:text-text-primary hover:bg-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"> Congresos </a> </li><li> <a href="/blog/" class="block px-5 py-4 text-lg font-semibold rounded-2xl transition-all text-text-secondary hover:text-text-primary hover:bg-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"> Blog </a> </li><li> <a href="/contact/" class="block px-5 py-4 text-lg font-semibold rounded-2xl transition-all text-text-secondary hover:text-text-primary hover:bg-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"> Contacto </a> </li> </ul> </nav> <div class="border-t border-border-default/50 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] space-y-6 bg-bg-secondary/30"> <div class="flex items-center justify-between px-2"> <span class="text-sm font-semibold text-text-secondary uppercase tracking-wider">Apariencia</span> <button type="button" data-theme-toggle class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-secondary/70 text-text-secondary transition-colors hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2" aria-label="Cambiar apariencia" title="Apariencia"> <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path> </svg> <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path> </svg> </button> </div> </div> </aside>  <script>
+  (() => {
+    const root = document.documentElement;
+
+    const setTheme = (theme) => {
+      root.setAttribute('data-theme', theme);
+      root.style.colorScheme = theme;
+      root.classList.toggle('dark', theme === 'dark');
+      try {
+        localStorage.setItem('theme', theme);
+      } catch {}
+    };
+
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const current = root.classList.contains('dark') ? 'dark' : 'light';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    });
+
+    const header = document.querySelector('[data-site-header]');
+    const headerInner = document.querySelector('[data-header-inner]');
+    let headerCondensed = null;
+    let headerFrame = 0;
+
+    const applyHeaderState = () => {
+      headerFrame = 0;
+      if (!header || !headerInner) return;
+      const scrolled = window.scrollY > 20;
+      if (headerCondensed === scrolled) return;
+      headerCondensed = scrolled;
+      header.classList.toggle('bg-transparent', !scrolled);
+      header.classList.toggle('py-2', !scrolled);
+      header.classList.toggle('bg-bg-primary/80', scrolled);
+      header.classList.toggle('backdrop-blur-xl', scrolled);
+      header.classList.toggle('shadow-md', scrolled);
+      header.classList.toggle('border-b', scrolled);
+      header.classList.toggle('border-border-default/50', scrolled);
+      headerInner.classList.toggle('h-16', scrolled);
+      headerInner.classList.toggle('h-20', !scrolled);
+      headerInner.classList.toggle('lg:h-24', !scrolled);
+    };
+
+    const syncHeader = () => {
+      if (headerFrame) return;
+      headerFrame = window.requestAnimationFrame(applyHeaderState);
+    };
+
+    applyHeaderState();
+    window.addEventListener('scroll', syncHeader, { passive: true });
+
+    const button = document.querySelector('[data-menu-button]');
+    const closeButton = document.querySelector('[data-menu-close]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    const backdrop = document.querySelector('[data-mobile-backdrop]');
+    const prefetchedRoutes = new Set();
+
+    const prefetchRoute = (href) => {
+      if (!href || !document.head) return;
+
+      let url;
+      try {
+        url = new URL(href, window.location.href);
+      } catch {
+        return;
+      }
+
+      if (url.origin !== window.location.origin) return;
+      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+
+      url.hash = '';
+      const route = url.toString();
+      if (prefetchedRoutes.has(route)) return;
+      prefetchedRoutes.add(route);
+
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.as = 'document';
+      link.href = route;
+      link.dataset.ajeduPrefetch = 'true';
+      document.head.appendChild(link);
+    };
+
+    const getNavigationLinks = () =>
+      Array.from(document.querySelectorAll('[data-site-header] a[href], [data-mobile-menu] a[href]'));
+
+    const canWarmNavigation = () => {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (connection?.saveData) return false;
+      return !/2g/.test(connection?.effectiveType || '');
+    };
+
+    const warmMenuNavigation = () => {
+      if (!canWarmNavigation()) return;
+      window.setTimeout(() => {
+        getNavigationLinks().forEach((link, index) => {
+          window.setTimeout(() => prefetchRoute(link.getAttribute('href')), index * 80);
+        });
+      }, 140);
+    };
+
+    const setMenu = (open, options = {}) => {
+      if (!button || !menu || !backdrop) return;
+      const restoreFocus = options.restoreFocus !== false;
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Cerrar menu' : 'Abrir menu');
+      menu.classList.toggle('hidden', !open);
+      menu.classList.toggle('flex', open);
+      backdrop.classList.toggle('hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        warmMenuNavigation();
+        closeButton?.focus();
+      } else if (restoreFocus) {
+        button.focus();
+      }
+    };
+
+    button?.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      setMenu(open);
+    });
+    closeButton?.addEventListener('click', () => setMenu(false));
+    backdrop?.addEventListener('click', () => setMenu(false));
+    getNavigationLinks().forEach((link) => {
+      const href = link.getAttribute('href');
+      link.addEventListener('pointerenter', () => prefetchRoute(href), { passive: true });
+      link.addEventListener('touchstart', () => prefetchRoute(href), { passive: true });
+      link.addEventListener('focus', () => prefetchRoute(href));
+    });
+    menu
+      ?.querySelectorAll('a')
+      .forEach((link) => link.addEventListener('click', () => setMenu(false, { restoreFocus: false })));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMenu(false);
+    });
+  })();
+</script>  <main id="main-content" class="outline-none" tabindex="-1" role="main" aria-label="Main content"> <div class="w-full px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto py-20 md:py-32 text-center"> <div class="space-y-8">  <div class="relative"> <h1 class="text-[8rem] sm:text-[12rem] md:text-[16rem] font-black text-primary-500/10 select-none leading-none">
+404
+</h1> <div class="absolute inset-0 flex items-center justify-center"> <h2 class="text-4xl md:text-6xl font-bold text-text-primary">Pagina no encontrada</h2> </div> </div> <p class="text-xl text-text-secondary max-w-lg mx-auto">
+No hemos encontrado esa pagina. Puedes volver al inicio o entrar en los recursos de ajedrez
+        educativo.
+</p>  <div class="flex flex-col sm:flex-row items-center justify-center gap-4"> <a href="/" class="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-lg bg-primary-700 px-6 text-lg font-medium text-white transition-colors hover:bg-primary-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2 dark:bg-primary-600 dark:hover:bg-primary-500"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house mr-2" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+Volver al inicio
+</a> <button onclick="window.history.back()" class="w-full sm:w-auto inline-flex items-center justify-center h-12 px-6 rounded-lg font-medium text-text-primary hover:bg-bg-secondary transition-colors border border-border-default"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left mr-2" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+Volver atras
+</button> </div>  <div class="pt-12 border-t border-border-default"> <h3 class="text-sm font-semibold uppercase tracking-wider text-text-tertiary mb-6">
+Paginas principales
+</h3> <div class="flex flex-wrap justify-center gap-x-8 gap-y-4"> <a href="/features/" class="text-text-secondary hover:text-primary-600 transition-colors">Recursos</a> <a href="/blog/" class="text-text-secondary hover:text-primary-600 transition-colors">Blog</a> <a href="/contact/" class="text-text-secondary hover:text-primary-600 transition-colors">Contacto</a> </div> </div> </div> </div>  </main> <footer class="bg-bg-secondary border-t border-border-default " role="contentinfo" aria-label="Pie de página"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16"><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12"><div class="col-span-2 md:col-span-3 lg:col-span-2"><a href="/" class="inline-flex items-center gap-2 text-text-primary hover:opacity-80 transition-opacity
+                         focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600
+                         focus-visible:ring-offset-2 rounded-lg mb-4" aria-label="ajEdu - Inicio"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center"><span class="text-lg leading-none text-white" aria-hidden="true">♟</span></div><span class="text-lg font-bold tracking-tight">ajEdu</span></a><p class="text-text-secondary text-sm leading-relaxed max-w-sm">Recursos, experiencias, publicaciones y proyectos para impulsar el ajedrez educativo desde 2005.</p><div class="mt-5 flex items-center gap-3" aria-label="Redes sociales de ajEdu"><a href="https://www.instagram.com/redajedu/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de ajEdu" title="Instagram de ajEdu" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-primary/70 text-text-secondary transition-colors hover:border-primary-500/50 hover:text-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a><a href="https://www.facebook.com/groups/147072125436905/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de ajEdu" title="Facebook de ajEdu" class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-default bg-bg-primary/70 text-text-secondary transition-colors hover:border-primary-500/50 hover:text-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a></div></div><div><h4 class="font-semibold text-text-primary mb-4 text-sm">ajEdu</h4><ul class="space-y-3"><li><a href="/features/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Recursos</a></li><li><a href="/blog/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Blog</a></li></ul></div><div><h4 class="font-semibold text-text-primary mb-4 text-sm">Red</h4><ul class="space-y-3"><li><a href="/equipo/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Equipo</a></li><li><a href="/congresosajedu/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Congresos</a></li><li><a href="/contact/#quiero-ser-integrante/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Quiero ser integrante</a></li><li><a href="/contact/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Contacto</a></li></ul></div><div><h4 class="font-semibold text-text-primary mb-4 text-sm">Recursos</h4><ul class="space-y-3"><li><a href="/features/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Ajedrez en el aula</a></li><li><a href="/blog/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Publicaciones</a></li></ul></div><div><h4 class="font-semibold text-text-primary mb-4 text-sm">Legal</h4><ul class="space-y-3"><li><a href="/privacy/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Privacidad</a></li><li><a href="/terms/" class="inline-flex items-center gap-1 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary text-text-secondary hover:text-text-primary hover:underline hover:underline-offset-2 text-base text-text-secondary hover:text-text-primary text-sm">Términos</a></li></ul></div></div></div><div class="border-t border-border-default"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"><div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"><div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-text-tertiary"><span>© 2026 ajEdu. Todos los derechos reservados.</span><span class="hidden sm:inline">-</span><span>Aportando al ajedrez educativo desde 2005</span></div></div></div></div></footer>  </body> </html>
