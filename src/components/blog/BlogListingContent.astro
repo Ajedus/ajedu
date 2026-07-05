@@ -1,0 +1,128 @@
+---
+import { BlogPostCard } from '../ui/BlogPostCard';
+import { FeaturedPost } from '../ui/FeaturedPost';
+import { Container } from '../ui/Container';
+import { Section } from '../ui/Section';
+import { blogPosts } from '@/data/blog';
+
+const mainBlogTags = ['ajedrez educativo', 'recursos', 'experiencias'] as const;
+const filters = [
+  { label: 'Todas las entradas', value: 'all' },
+  ...mainBlogTags.map((tag) => ({ label: tag, value: tag })),
+];
+
+const featuredPost = blogPosts[0];
+const secondaryPosts = blogPosts.slice(1);
+---
+
+<div class="flex flex-col" data-testid="blog-listing" data-blog-listing>
+  <Section background="default" padding="sm" className="pb-0">
+    <Container>
+      <div class="flex w-full overflow-x-auto pb-2">
+        <div class="mx-auto flex w-fit min-w-full justify-center gap-2 rounded-full border border-border-muted bg-bg-secondary/50 p-1 whitespace-nowrap">
+          {
+            filters.map((filter, index) => (
+              <button
+                type="button"
+                data-blog-filter={filter.value}
+                class={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                  index === 0
+                    ? 'bg-bg-primary text-text-primary shadow-sm'
+                    : 'text-text-muted hover:text-text-primary'
+                }`}
+                aria-pressed={index === 0 ? 'true' : 'false'}
+              >
+                {filter.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section background="default" padding="sm" className="pt-8 pb-24">
+    <Container>
+      {
+        featuredPost ? (
+          <div data-blog-post data-tags={featuredPost.tags.join('|')}>
+            <FeaturedPost post={featuredPost} />
+          </div>
+        ) : null
+      }
+
+      {
+        secondaryPosts.length > 0 && (
+          <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {secondaryPosts.map((post) => (
+              <div data-blog-post data-tags={post.tags.join('|')}>
+                <BlogPostCard post={post} />
+              </div>
+            ))}
+          </div>
+        )
+      }
+
+      <div
+        data-empty-state
+        hidden
+        class="rounded-2xl border border-dashed border-border-muted bg-bg-secondary/50 py-20 text-center"
+      >
+        <h2 class="text-2xl font-bold text-text-primary mb-2">No hay publicaciones</h2>
+        <p class="text-text-muted">Todavía no hay artículos en esta categoría.</p>
+      </div>
+    </Container>
+  </Section>
+</div>
+
+<style>
+  :global([data-blog-listing] img.opacity-0) {
+    opacity: 1;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-blog-listing]');
+    if (!root) return;
+
+    const buttons = Array.from(root.querySelectorAll('[data-blog-filter]'));
+    const posts = Array.from(root.querySelectorAll('[data-blog-post]'));
+    const emptyState = root.querySelector('[data-empty-state]');
+
+    const setActiveButton = (activeButton) => {
+      buttons.forEach((button) => {
+        const active = button === activeButton;
+        button.setAttribute('aria-pressed', String(active));
+        button.classList.toggle('bg-bg-primary', active);
+        button.classList.toggle('text-text-primary', active);
+        button.classList.toggle('shadow-sm', active);
+        button.classList.toggle('text-text-muted', !active);
+        button.classList.toggle('hover:text-text-primary', !active);
+      });
+    };
+
+    const setFilter = (filter, activeButton) => {
+      let visiblePosts = 0;
+
+      posts.forEach((post) => {
+        const tags = (post.getAttribute('data-tags') || '').split('|');
+        const visible = filter === 'all' || tags.includes(filter);
+        post.hidden = !visible;
+        if (visible) visiblePosts += 1;
+      });
+
+      if (emptyState) {
+        emptyState.hidden = visiblePosts > 0;
+      }
+
+      setActiveButton(activeButton);
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setFilter(button.getAttribute('data-blog-filter') || 'all', button);
+      });
+    });
+  })();
+</script>

@@ -221,9 +221,15 @@ const brandName = 'AJEDU';
 
     const header = document.querySelector('[data-site-header]');
     const headerInner = document.querySelector('[data-header-inner]');
-    const syncHeader = () => {
+    let headerCondensed = null;
+    let headerFrame = 0;
+
+    const applyHeaderState = () => {
+      headerFrame = 0;
       if (!header || !headerInner) return;
       const scrolled = window.scrollY > 20;
+      if (headerCondensed === scrolled) return;
+      headerCondensed = scrolled;
       header.classList.toggle('bg-transparent', !scrolled);
       header.classList.toggle('py-2', !scrolled);
       header.classList.toggle('bg-bg-primary/80', scrolled);
@@ -235,16 +241,67 @@ const brandName = 'AJEDU';
       headerInner.classList.toggle('h-20', !scrolled);
       headerInner.classList.toggle('lg:h-24', !scrolled);
     };
-    syncHeader();
+
+    const syncHeader = () => {
+      if (headerFrame) return;
+      headerFrame = window.requestAnimationFrame(applyHeaderState);
+    };
+
+    applyHeaderState();
     window.addEventListener('scroll', syncHeader, { passive: true });
 
     const button = document.querySelector('[data-menu-button]');
     const closeButton = document.querySelector('[data-menu-close]');
     const menu = document.querySelector('[data-mobile-menu]');
     const backdrop = document.querySelector('[data-mobile-backdrop]');
+    const prefetchedRoutes = new Set();
 
-    const setMenu = (open) => {
+    const runWhenIdle = (callback) => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(callback, { timeout: 1600 });
+      } else {
+        window.setTimeout(callback, 500);
+      }
+    };
+
+    const prefetchRoute = (href) => {
+      if (!href || !document.head) return;
+
+      let url;
+      try {
+        url = new URL(href, window.location.href);
+      } catch {
+        return;
+      }
+
+      if (url.origin !== window.location.origin) return;
+      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+
+      url.hash = '';
+      const route = url.toString();
+      if (prefetchedRoutes.has(route)) return;
+      prefetchedRoutes.add(route);
+
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.as = 'document';
+      link.href = route;
+      link.dataset.ajeduPrefetch = 'true';
+      document.head.appendChild(link);
+    };
+
+    const getNavigationLinks = () =>
+      Array.from(document.querySelectorAll('[data-site-header] a[href], [data-mobile-menu] a[href]'));
+
+    const prefetchNavigation = () => {
+      runWhenIdle(() => {
+        getNavigationLinks().forEach((link) => prefetchRoute(link.getAttribute('href')));
+      });
+    };
+
+    const setMenu = (open, options = {}) => {
       if (!button || !menu || !backdrop) return;
+      const restoreFocus = options.restoreFocus !== false;
       button.setAttribute('aria-expanded', String(open));
       button.setAttribute('aria-label', open ? 'Cerrar menu' : 'Abrir menu');
       menu.classList.toggle('hidden', !open);
@@ -252,8 +309,9 @@ const brandName = 'AJEDU';
       backdrop.classList.toggle('hidden', !open);
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) {
+        prefetchNavigation();
         closeButton?.focus();
-      } else {
+      } else if (restoreFocus) {
         button.focus();
       }
     };
@@ -264,7 +322,16 @@ const brandName = 'AJEDU';
     });
     closeButton?.addEventListener('click', () => setMenu(false));
     backdrop?.addEventListener('click', () => setMenu(false));
-    menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+    getNavigationLinks().forEach((link) => {
+      const href = link.getAttribute('href');
+      link.addEventListener('pointerenter', () => prefetchRoute(href), { passive: true });
+      link.addEventListener('touchstart', () => prefetchRoute(href), { passive: true });
+      link.addEventListener('focus', () => prefetchRoute(href));
+    });
+    menu
+      ?.querySelectorAll('a')
+      .forEach((link) => link.addEventListener('click', () => setMenu(false, { restoreFocus: false })));
+    prefetchNavigation();
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') setMenu(false);
     });
