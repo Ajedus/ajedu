@@ -46,7 +46,15 @@ const platformIcons = {
  * their photo, name, role, bio, and social media links.
  */
 export const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardProps>(
-  ({ name, role, bio, avatar, social = [], isLeadership = false, className, ...props }, ref) => {
+  (
+    { name, role, bio, avatar, social = [], isLeadership = false, className, style, ...props },
+    ref,
+  ) => {
+    const avatarSrc = avatar.startsWith('/images/team/ajedu-members/')
+      ? avatar.replace('/images/team/ajedu-members/', '/images/team/ajedu-members/thumbs/')
+      : avatar;
+    const avatarSize = isLeadership ? 224 : 192;
+
     // Generate initials for avatar fallback
     const initials = name
       .split(' ')
@@ -67,6 +75,13 @@ export const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardPro
           isLeadership && 'ring-2 ring-primary-500/10 shadow-lg',
           className,
         )}
+        style={
+          {
+            contentVisibility: 'auto',
+            containIntrinsicSize: isLeadership ? '28rem' : '24rem',
+            ...style,
+          } as React.CSSProperties
+        }
         {...props}
       >
         <CardContent className="p-8 flex flex-col items-center">
@@ -82,8 +97,10 @@ export const TeamMemberCard = React.forwardRef<HTMLDivElement, TeamMemberCardPro
               {initials}
             </div>
             <img
-              src={avatar}
+              src={avatarSrc}
               alt={name}
+              width={avatarSize}
+              height={avatarSize}
               loading="lazy"
               decoding="async"
               className="relative z-10 w-full h-full object-cover"

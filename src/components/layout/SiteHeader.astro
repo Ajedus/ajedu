@@ -256,14 +256,6 @@ const brandName = 'AJEDU';
     const backdrop = document.querySelector('[data-mobile-backdrop]');
     const prefetchedRoutes = new Set();
 
-    const runWhenIdle = (callback) => {
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(callback, { timeout: 1600 });
-      } else {
-        window.setTimeout(callback, 500);
-      }
-    };
-
     const prefetchRoute = (href) => {
       if (!href || !document.head) return;
 
@@ -293,10 +285,19 @@ const brandName = 'AJEDU';
     const getNavigationLinks = () =>
       Array.from(document.querySelectorAll('[data-site-header] a[href], [data-mobile-menu] a[href]'));
 
-    const prefetchNavigation = () => {
-      runWhenIdle(() => {
-        getNavigationLinks().forEach((link) => prefetchRoute(link.getAttribute('href')));
-      });
+    const canWarmNavigation = () => {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (connection?.saveData) return false;
+      return !/2g/.test(connection?.effectiveType || '');
+    };
+
+    const warmMenuNavigation = () => {
+      if (!canWarmNavigation()) return;
+      window.setTimeout(() => {
+        getNavigationLinks().forEach((link, index) => {
+          window.setTimeout(() => prefetchRoute(link.getAttribute('href')), index * 80);
+        });
+      }, 140);
     };
 
     const setMenu = (open, options = {}) => {
@@ -309,7 +310,7 @@ const brandName = 'AJEDU';
       backdrop.classList.toggle('hidden', !open);
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) {
-        prefetchNavigation();
+        warmMenuNavigation();
         closeButton?.focus();
       } else if (restoreFocus) {
         button.focus();
@@ -331,7 +332,6 @@ const brandName = 'AJEDU';
     menu
       ?.querySelectorAll('a')
       .forEach((link) => link.addEventListener('click', () => setMenu(false, { restoreFocus: false })));
-    prefetchNavigation();
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') setMenu(false);
     });

@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { type Variants, motion } from 'motion/react';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { TeamMemberCard } from '@/components/ui/TeamMemberCard';
-import { PersonSchemaList } from '@/components/seo';
 import { teamMembers } from '@/data/team';
-import { PRESETS } from '@/config/animation';
 import { cn } from '@/utils/cn';
 
 /**
@@ -93,26 +90,8 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
                     : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl'
                 )}
               >
-                {leadership.map((member, index) => (
-                  <motion.div
-                    key={member.id}
-                    initial={false}
-                    whileInView="animate"
-                    viewport={{ once: true, margin: '-50px' }}
-                    variants={
-                      {
-                        initial: PRESETS.fadeInUp?.initial,
-                        animate: {
-                          ...PRESETS.fadeInUp?.animate,
-                          transition: {
-                            delay: index * 0.1,
-                            duration: 0.5,
-                          },
-                        },
-                      } as unknown as Variants
-                    }
-                    className="will-change-transform"
-                  >
+                {leadership.map((member) => (
+                  <div key={member.id}>
                     <TeamMemberCard
                       name={member.name}
                       role={member.role}
@@ -122,7 +101,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
                       isLeadership
                       className="h-full"
                     />
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -133,26 +112,8 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
             <div className="space-y-8">
               <h3 className="text-2xl font-bold text-text-primary text-center">Comunidad ajEdu</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                {others.map((member, index) => (
-                  <motion.div
-                    key={member.id}
-                    initial={false}
-                    whileInView="animate"
-                    viewport={{ once: true, margin: '-50px' }}
-                    variants={
-                      {
-                        initial: PRESETS.fadeInUp?.initial,
-                        animate: {
-                          ...PRESETS.fadeInUp?.animate,
-                          transition: {
-                            delay: (index + leadership.length) * 0.05,
-                            duration: 0.5,
-                          },
-                        },
-                      } as unknown as Variants
-                    }
-                    className="will-change-transform"
-                  >
+                {others.map((member) => (
+                  <div key={member.id}>
                     <TeamMemberCard
                       name={member.name}
                       role={member.role}
@@ -161,15 +122,12 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
                       social={member.social}
                       className="h-full"
                     />
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
           )}
         </div>
-
-        {/* SEO Structured Data */}
-        <PersonSchemaList members={teamMembers} />
       </Container>
     </Section>
   );
