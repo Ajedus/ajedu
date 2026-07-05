@@ -33,8 +33,8 @@ export const blogAuthors: BlogAuthor[] = [
   {
     id: 'ricardo-gil-turrion',
     name: 'Ricardo Gil Turrión',
-    role: 'Colaborador ajEdu',
-    avatar: '/images/blog/hombres-musgo-bejar/hombres-musgo-bejar-1.webp',
-    bio: 'Colaborador de ajEdu en experiencias que conectan ajedrez, educación, patrimonio y cultura viva.',
+    role: 'Miembro ajEdu',
+    avatar: '/images/blog/hombres-musgo-bejar/hombres-musgo-bejar-4.webp',
+    bio: 'Miembro ajEdu en experiencias que conectan ajedrez, educación, patrimonio y cultura viva.',
   },
 ];

@@ -8,7 +8,7 @@ export const post9: BlogPost = {
   excerpt:
     'Una experiencia de ajedrez viviente donde la memoria, la tradición y la leyenda de los Hombres de Musgo convierten el tablero en patrimonio compartido.',
   category: 'experiencias',
-  author: blogAuthors.find((author) => author.id === 'comunidad-ajedu')!,
+  author: blogAuthors.find((author) => author.id === 'ricardo-gil-turrion')!,
   publishedAt: '2026-07-04',
   readingTime: 7,
   featured: true,
