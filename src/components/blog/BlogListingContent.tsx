@@ -9,6 +9,7 @@ import { cn } from '@/utils/cn';
 const mainBlogTags = ['ajedrez educativo', 'recursos', 'experiencias'] as const;
 type MainBlogTag = (typeof mainBlogTags)[number];
 const allEntriesLabel = 'Todas las entradas';
+const filterTags = [allEntriesLabel, ...mainBlogTags] as const;
 
 export const BlogListingContent: React.FC = () => {
   const [activeTag, setActiveTag] = React.useState<MainBlogTag | typeof allEntriesLabel>(
@@ -30,7 +31,7 @@ export const BlogListingContent: React.FC = () => {
         <Container>
           <div className="flex w-full overflow-x-auto pb-2">
             <div className="mx-auto flex w-fit min-w-full justify-center gap-2 rounded-full border border-border-muted bg-bg-secondary/50 p-1 whitespace-nowrap">
-              {[allEntriesLabel, ...mainBlogTags].map((tag) => (
+              {filterTags.map((tag) => (
                 <button
                   key={tag}
                   type="button"

@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import sitemap from '@astrojs/sitemap';
+import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 
 /**
  * Determines the base path for deployment
@@ -35,26 +35,26 @@ export default defineConfig({
         item.lastmod = new Date().toISOString();
         const url = item.url || '';
         if (url === 'https://redajedu.com/') {
-          item.changefreq = 'weekly';
+          item.changefreq = ChangeFreqEnum.WEEKLY;
           item.priority = 1;
         } else if (url.includes('/blog/') && url !== 'https://redajedu.com/blog/') {
-          item.changefreq = 'monthly';
+          item.changefreq = ChangeFreqEnum.MONTHLY;
           item.priority = 0.8;
         } else if (url.includes('/blog/')) {
-          item.changefreq = 'weekly';
+          item.changefreq = ChangeFreqEnum.WEEKLY;
           item.priority = 0.9;
         } else if (url.includes('/privacy/') || url.includes('/terms/')) {
-          item.changefreq = 'yearly';
+          item.changefreq = ChangeFreqEnum.YEARLY;
           item.priority = 0.3;
         } else if (
           url.includes('/features/') ||
           url.includes('/equipo/') ||
           url.includes('/contact/')
         ) {
-          item.changefreq = 'monthly';
+          item.changefreq = ChangeFreqEnum.MONTHLY;
           item.priority = 0.9;
         } else {
-          item.changefreq = 'monthly';
+          item.changefreq = ChangeFreqEnum.MONTHLY;
           item.priority = 0.7;
         }
         return item;
