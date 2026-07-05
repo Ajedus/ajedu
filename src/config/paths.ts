@@ -213,6 +213,7 @@ export const ROUTES = {
   HOME: '/',
   FEATURES: '/features/',
   EQUIPO: '/equipo/',
+  CONGRESOS: '/congresosajedu/',
   CONTACT: '/contact/',
   JOIN: '/contact/#quiero-ser-integrante',
   BLOG: '/blog/',
@@ -235,6 +236,7 @@ export const NAVIGATION = {
   main: [
     { label: 'Recursos', href: ROUTES.FEATURES },
     { label: 'Equipo', href: ROUTES.EQUIPO },
+    { label: 'Congresos', href: ROUTES.CONGRESOS },
     { label: 'Blog', href: ROUTES.BLOG },
     { label: 'Contacto', href: ROUTES.CONTACT },
   ],

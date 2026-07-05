@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pageSEO } from '../config/site';
+
+const seo = pageSEO.congresos;
+
+const congresses = [
+  {
+    edition: 'VIII Congreso Virtual ajEdu',
+    title: 'Las "otras" transversalidades del ajedrez',
+    image: '/images/congresos-ajedu/viii-congreso-virtual-ajedu.webp',
+    period: 'Febrero 2026',
+  },
+  {
+    edition: 'VII Congreso Virtual ajEdu',
+    title: 'La transversalidad artistica del ajedrez',
+    image: '/images/congresos-ajedu/vii-congreso-virtual-ajedu.webp',
+    period: 'Octubre 2023 - Febrero 2024',
+  },
+  {
+    edition: 'VI Congreso Virtual ajEdu',
+    title: 'Los valores y las emociones en el ajedrez educativo',
+    image: '/images/congresos-ajedu/vi-congreso-virtual-ajedu.webp',
+    period: 'Octubre 2021 - Febrero 2022',
+  },
+  {
+    edition: 'V Congreso Virtual ajEdu',
+    title: 'La transversalidad social del ajedrez',
+    image: '/images/congresos-ajedu/v-congreso-virtual-ajedu.webp',
+    period: 'Noviembre 2020 - Febrero 2021',
+  },
+  {
+    edition: 'IV Congreso Virtual ajEdu',
+    title: 'La transversalidad linguistica del ajedrez',
+    image: '/images/congresos-ajedu/iv-congreso-virtual-ajedu.webp',
+    period: '14, 15 y 16 de febrero de 2020',
+  },
+  {
+    edition: 'III Congreso Virtual ajEdu',
+    title: 'La transversalidad matematica del ajedrez',
+    image: '/images/congresos-ajedu/iii-congreso-virtual-ajedu.webp',
+    period: '16, 17 y 18 de marzo de 2019',
+  },
+  {
+    edition: 'II Congreso Virtual ajEdu',
+    title: 'Gamificacion del Ajedrez Educativo',
+    image: '/images/congresos-ajedu/ii-congreso-virtual-ajedu.webp',
+    period: '16, 17 y 18 de marzo',
+  },
+  {
+    edition: 'I Congreso Virtual ajEdu',
+    title: 'Un nuevo paradigma: Ajedrez Educativo',
+    image: '/images/congresos-ajedu/i-congreso-virtual-ajedu.webp',
+    period: '6, 7 y 8 de marzo de 2015',
+  },
+];
+---
+
+<Layout title={seo.title} description={seo.description}>
+  <section class="relative overflow-hidden pt-32 pb-14 text-center sm:pt-36 lg:pt-40 bg-bg-primary">
+    <div class="absolute inset-x-0 top-0 h-px bg-border-default" aria-hidden="true"></div>
+    <div class="container-wide">
+      <div class="mx-auto max-w-5xl">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-normal leading-tight text-text-primary">
+          Congresos Virtuales de <span class="text-primary-500">ajEdu</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-text-secondary">
+          Un espacio para compartir experiencias, investigaciones, recursos y reflexiones sobre
+          ajedrez educativo desde multiples perspectivas pedagogicas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 bg-bg-secondary/50">
+    <div class="container-wide">
+      <div class="mx-auto max-w-5xl space-y-8">
+        {
+          congresses.map((congress) => (
+            <article class="grid overflow-hidden rounded-xl border border-border-default bg-bg-primary shadow-sm lg:grid-cols-[20rem_1fr]">
+              <div class="flex items-center justify-center border-b border-border-default bg-white p-4 lg:border-b-0 lg:border-r lg:p-6">
+                <img
+                  src={congress.image}
+                  alt={`${congress.edition}: ${congress.title}`}
+                  loading="lazy"
+                  decoding="async"
+                  class="max-h-[28rem] w-full object-contain lg:max-h-[24rem]"
+                />
+              </div>
+              <div class="flex flex-col justify-center p-5 sm:p-7 lg:p-8">
+                <p class="text-sm font-black uppercase tracking-[0.16em] text-primary-500">
+                  {congress.edition}
+                </p>
+                <h2 class="mt-3 text-2xl font-black tracking-normal text-text-primary sm:text-3xl">
+                  {congress.title}
+                </h2>
+                <p class="mt-3 text-sm font-semibold text-text-muted">{congress.period}</p>
+                <p class="mt-5 max-w-2xl text-sm leading-relaxed text-text-secondary sm:text-base">
+                  Edicion integrada en los Congresos Virtuales ajEdu, un espacio para compartir
+                  experiencias, recursos y miradas educativas alrededor del ajedrez.
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

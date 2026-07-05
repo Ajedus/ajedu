@@ -315,6 +315,7 @@ export const siteNavigation = {
   main: [
     { label: 'Recursos', href: ROUTES.FEATURES },
     { label: 'Equipo', href: ROUTES.EQUIPO },
+    { label: 'Congresos', href: ROUTES.CONGRESOS },
     { label: 'Blog', href: ROUTES.BLOG },
     { label: 'Contacto', href: ROUTES.CONTACT },
   ],
@@ -332,6 +333,7 @@ export const siteNavigation = {
       title: 'Red',
       links: [
         { label: 'Equipo', href: ROUTES.EQUIPO },
+        { label: 'Congresos', href: ROUTES.CONGRESOS },
         { label: 'Quiero ser integrante', href: ROUTES.JOIN },
         { label: 'Contacto', href: ROUTES.CONTACT },
       ],
@@ -378,6 +380,11 @@ export const pageSEO = {
     title: 'Equipo e integrantes',
     description:
       'Conoce a docentes, educadores, investigadores y colaboradores que forman parte de la comunidad internacional ajEdu.',
+  },
+  congresos: {
+    title: 'Congresos ajEdu',
+    description:
+      'Encuentros, comunicaciones y espacios de intercambio de la red ajEdu sobre ajedrez educativo.',
   },
   contact: {
     title: 'Contacto e incorporación',
