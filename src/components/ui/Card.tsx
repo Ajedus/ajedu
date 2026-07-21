@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { motion } from 'motion/react';
-import { useReducedMotion } from '@/utils/reducedMotion';
 import { cn } from '@/utils/cn';
 import { LazyImage } from './LazyImage';
 
@@ -104,8 +102,6 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     },
     ref,
   ) => {
-    const { prefersReducedMotion } = useReducedMotion();
-
     // Variant styles
     const variantStyles = {
       default: cn(
@@ -139,24 +135,19 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     // Hover effect classes
     const hoverClasses = hover
       ? cn(
-          'cursor-pointer transition-all duration-300 ease-out',
-          !prefersReducedMotion && 'hover:-translate-y-1',
+          'cursor-pointer transition-all duration-300 ease-out motion-safe:hover:-translate-y-1',
           variant === 'default' && 'hover:shadow-lg',
           variant === 'elevated' && 'hover:shadow-2xl',
           (glow || variant === 'default') &&
-            !prefersReducedMotion &&
-            'hover:shadow-primary/10 hover:border-primary-500/30',
+            'motion-safe:hover:shadow-primary/10 motion-safe:hover:border-primary-500/30',
         )
       : '';
 
     // Full width style
     const widthStyles = fullWidth ? 'w-full' : '';
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const MotionDiv = motion.div as any;
-
     return (
-      <MotionDiv
+      <div
         ref={ref}
         className={cn(
           // Base styles
@@ -177,7 +168,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         {...props}
       >
         {children}
-      </MotionDiv>
+      </div>
     );
   },
 );

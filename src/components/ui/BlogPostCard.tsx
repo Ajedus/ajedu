@@ -116,6 +116,7 @@ export const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
                     alt={author.name}
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
                   />
                 ) : (
                   <span>{initials}</span>

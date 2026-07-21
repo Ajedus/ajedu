@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { cn } from '@/utils/cn';
-import { Skeleton } from './Skeleton';
 import { getAssetPath, isExternalUrl } from '@/config/paths';
 
 export interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -38,47 +37,13 @@ export const LazyImage = React.forwardRef<HTMLImageElement, LazyImageProps>(
       loading = 'lazy',
       className,
       containerClassName,
-      placeholder = true,
+      placeholder,
       aspectRatio,
-      onLoad,
-      onError,
+      decoding,
       ...props
     },
     ref,
   ) => {
-    const [isLoaded, setIsLoaded] = React.useState(false);
-    const [hasError, setHasError] = React.useState(false);
-    const imgRef = React.useRef<HTMLImageElement>(null);
-
-    const handleLoad = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-      setIsLoaded(true);
-      if (onLoad) onLoad(event);
-    };
-
-    const handleError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-      setHasError(true);
-      if (onError) onError(event);
-    };
-
-    // Check if image is already cached on mount - handles race condition where
-    // onLoad never fires for cached images during React hydration
-    React.useEffect(() => {
-      if (imgRef.current?.complete && !isLoaded) {
-        setIsLoaded(true);
-      }
-    }, [isLoaded]);
-
-    // Fallback: force show image after 5 seconds to prevent perpetual skeleton state
-    React.useEffect(() => {
-      if (isLoaded) return;
-
-      const timeoutId = setTimeout(() => {
-        setIsLoaded(true);
-      }, 5000);
-
-      return () => clearTimeout(timeoutId);
-    }, [isLoaded]);
-
     // If no src, we can't show much
     if (!src) return null;
 
@@ -90,45 +55,17 @@ export const LazyImage = React.forwardRef<HTMLImageElement, LazyImageProps>(
         className={cn('relative overflow-hidden bg-bg-tertiary/20', containerClassName)}
         style={{ aspectRatio }}
       >
-        {/* Placeholder / Skeleton */}
-        {!isLoaded && !hasError && placeholder && (
-          <div className="absolute inset-0 z-0">
-            {placeholder === true ? (
-              <Skeleton className="w-full h-full rounded-none" />
-            ) : (
-              placeholder
-            )}
-          </div>
+        {placeholder && placeholder !== true && (
+          <div className="absolute inset-0 z-0 flex items-center justify-center">{placeholder}</div>
         )}
 
-        {/* Error State */}
-        {hasError && (
-          <div className="absolute inset-0 flex items-center justify-center bg-bg-tertiary text-text-muted text-xs p-2 text-center">
-            Failed to load image
-          </div>
-        )}
-
-        {/* Actual Image */}
         <img
-          ref={(node) => {
-            // Compose refs: set both forwarded ref and internal ref
-            imgRef.current = node;
-            if (typeof ref === 'function') {
-              ref(node);
-            } else if (ref) {
-              ref.current = node;
-            }
-          }}
+          ref={ref}
           src={resolvedSrc}
           alt={alt}
           loading={loading}
-          onLoad={handleLoad}
-          onError={handleError}
-          className={cn(
-            'transition-opacity duration-500 ease-in-out',
-            isLoaded ? 'opacity-100' : 'opacity-0',
-            className,
-          )}
+          decoding={decoding || (loading === 'eager' ? 'sync' : 'async')}
+          className={cn('relative z-10 block', className)}
           {...props}
         />
       </div>

@@ -125,7 +125,7 @@ export const FeaturedPost = React.forwardRef<HTMLDivElement, FeaturedPostProps>(
                     alt={author.name}
                     containerClassName="w-full h-full"
                     className="w-full h-full object-cover"
-                    loading="eager"
+                    loading="lazy"
                     placeholder={<span>{initials}</span>}
                   />
                 ) : (

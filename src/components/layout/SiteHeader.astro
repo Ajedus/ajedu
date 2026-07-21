@@ -285,19 +285,10 @@ const brandName = 'AJEDU';
     const getNavigationLinks = () =>
       Array.from(document.querySelectorAll('[data-site-header] a[href], [data-mobile-menu] a[href]'));
 
-    const canWarmNavigation = () => {
+    const canPrefetchNavigation = () => {
       const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
       if (connection?.saveData) return false;
       return !/2g/.test(connection?.effectiveType || '');
-    };
-
-    const warmMenuNavigation = () => {
-      if (!canWarmNavigation()) return;
-      window.setTimeout(() => {
-        getNavigationLinks().forEach((link, index) => {
-          window.setTimeout(() => prefetchRoute(link.getAttribute('href')), index * 80);
-        });
-      }, 140);
     };
 
     const setMenu = (open, options = {}) => {
@@ -310,7 +301,6 @@ const brandName = 'AJEDU';
       backdrop.classList.toggle('hidden', !open);
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) {
-        warmMenuNavigation();
         closeButton?.focus();
       } else if (restoreFocus) {
         button.focus();
@@ -323,12 +313,16 @@ const brandName = 'AJEDU';
     });
     closeButton?.addEventListener('click', () => setMenu(false));
     backdrop?.addEventListener('click', () => setMenu(false));
-    getNavigationLinks().forEach((link) => {
-      const href = link.getAttribute('href');
-      link.addEventListener('pointerenter', () => prefetchRoute(href), { passive: true });
-      link.addEventListener('touchstart', () => prefetchRoute(href), { passive: true });
-      link.addEventListener('focus', () => prefetchRoute(href));
-    });
+    if (canPrefetchNavigation()) {
+      const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      getNavigationLinks().forEach((link) => {
+        const href = link.getAttribute('href');
+        if (supportsHover) {
+          link.addEventListener('pointerenter', () => prefetchRoute(href), { passive: true });
+        }
+        link.addEventListener('focus', () => prefetchRoute(href));
+      });
+    }
     menu
       ?.querySelectorAll('a')
       .forEach((link) => link.addEventListener('click', () => setMenu(false, { restoreFocus: false })));
