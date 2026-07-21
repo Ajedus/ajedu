@@ -19,7 +19,7 @@
         document.documentElement.classList.add('dark');
       }
     })();
-  </script><link rel="stylesheet" href="/assets/Layout-CkV8RxLy.css"></head> <body class="min-h-screen bg-bg-primary text-text-primary antialiased"> <!-- Skip to content link for accessibility --> <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 transition-all">
+  </script><link rel="stylesheet" href="/assets/Layout-BDBdFGsA.css"></head> <body class="min-h-screen bg-bg-primary text-text-primary antialiased"> <!-- Skip to content link for accessibility --> <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 transition-all">
 Skip to content
 </a>  <header data-site-header class="fixed top-0 left-0 right-0 z-40 bg-transparent py-2 transition-all duration-300 ease-in-out pt-[env(safe-area-inset-top)]" role="banner" aria-label="Cabecera"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div data-header-inner class="flex h-20 lg:h-24 items-center justify-between transition-all duration-300"> <a href="/" class="flex items-center gap-2 text-text-primary hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 rounded-lg" aria-label="AJEDU - Inicio"> <div class="w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-sm"> <span class="text-xl lg:text-2xl leading-none text-white" aria-hidden="true">
 &#9823;
@@ -109,19 +109,10 @@ Skip to content
     const getNavigationLinks = () =>
       Array.from(document.querySelectorAll('[data-site-header] a[href], [data-mobile-menu] a[href]'));
 
-    const canWarmNavigation = () => {
+    const canPrefetchNavigation = () => {
       const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
       if (connection?.saveData) return false;
       return !/2g/.test(connection?.effectiveType || '');
-    };
-
-    const warmMenuNavigation = () => {
-      if (!canWarmNavigation()) return;
-      window.setTimeout(() => {
-        getNavigationLinks().forEach((link, index) => {
-          window.setTimeout(() => prefetchRoute(link.getAttribute('href')), index * 80);
-        });
-      }, 140);
     };
 
     const setMenu = (open, options = {}) => {
@@ -134,7 +125,6 @@ Skip to content
       backdrop.classList.toggle('hidden', !open);
       document.body.style.overflow = open ? 'hidden' : '';
       if (open) {
-        warmMenuNavigation();
         closeButton?.focus();
       } else if (restoreFocus) {
         button.focus();
@@ -147,12 +137,16 @@ Skip to content
     });
     closeButton?.addEventListener('click', () => setMenu(false));
     backdrop?.addEventListener('click', () => setMenu(false));
-    getNavigationLinks().forEach((link) => {
-      const href = link.getAttribute('href');
-      link.addEventListener('pointerenter', () => prefetchRoute(href), { passive: true });
-      link.addEventListener('touchstart', () => prefetchRoute(href), { passive: true });
-      link.addEventListener('focus', () => prefetchRoute(href));
-    });
+    if (canPrefetchNavigation()) {
+      const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      getNavigationLinks().forEach((link) => {
+        const href = link.getAttribute('href');
+        if (supportsHover) {
+          link.addEventListener('pointerenter', () => prefetchRoute(href), { passive: true });
+        }
+        link.addEventListener('focus', () => prefetchRoute(href));
+      });
+    }
     menu
       ?.querySelectorAll('a')
       .forEach((link) => link.addEventListener('click', () => setMenu(false, { restoreFocus: false })));
